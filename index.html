@@ -54,7 +54,7 @@
     color: var(--text); letter-spacing: -0.3px;
   }
   .nav-wordmark span { color: var(--teal); }
-  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links { display: flex; align-items: center; gap: 20px; }
   .nl { font-size: 13.5px; color: var(--text2); text-decoration: none; transition: color 0.15s; }
   .nl:hover { color: var(--text); }
   .nav-cta {
@@ -64,6 +64,15 @@
     text-decoration: none; transition: all 0.15s;
   }
   .nav-cta:hover { background: var(--teal2); }
+  .nav-sep { width: 1px; height: 18px; background: var(--border); }
+  .nav-login {
+    padding: 8px 16px;
+    background: transparent; color: var(--teal);
+    border: 1.5px solid var(--teal);
+    border-radius: var(--r); font-size: 13px; font-weight: 500;
+    text-decoration: none; transition: all 0.15s;
+  }
+  .nav-login:hover { background: var(--teal); color: white; }
 
   /* HERO */
   .hero {
@@ -497,7 +506,10 @@
     <a class="nl" href="#how">How it works</a>
     <a class="nl" href="#compliance">Compliance</a>
     <a class="nl" href="#pricing">Pricing</a>
-    <a class="nav-cta" href="#start">Get started free</a>
+    <div class="nav-sep"></div>
+    <a class="nav-login" href="https://portal.tenancy-portal.co.uk">Tenant login</a>
+    <a class="nav-login" href="https://landlord.tenancy-portal.co.uk">Landlord login</a>
+    <a class="nav-cta" href="#start">Get started</a>
   </div>
 </nav>
 
@@ -507,7 +519,7 @@
   <h1 class="hero-h">Your tenancy documents.<br><em>Signed, acknowledged, sorted.</em></h1>
   <p class="hero-sub">Give every tenant a secure portal to receive, read and confirm their documents. Build the audit trail the Renters Rights Bill demands — without the letting agent fees.</p>
   <div class="hero-actions">
-    <a href="#start" class="btn-primary">Start free — no card required</a>
+    <a href="#start" class="btn-primary">Get started free</a>
     <a href="#how" class="btn-ghost">See how it works</a>
   </div>
 </div>
@@ -721,7 +733,7 @@
         </div>
       </div>
     </div>
-    <p class="pricing-note">All paid plans include a 14-day free trial. No credit card required to start.</p>
+    <p class="pricing-note">Paid plans require a GoCardless direct debit mandate. Cancel any time with 30 days notice.</p>
   </div>
 
   <!-- HMO Panel -->
@@ -777,7 +789,7 @@
         </div>
       </div>
     </div>
-    <p class="pricing-note">All plans include a 14-day free trial. No credit card required to start.</p>
+    <p class="pricing-note">Paid plans require a GoCardless direct debit mandate. Cancel any time with 30 days notice.</p>
   </div>
 
   <!-- Hybrid Panel -->
@@ -828,14 +840,14 @@
         </div>
       </div>
     </div>
-    <p class="pricing-note">All plans include a 14-day free trial. No credit card required to start.</p>
+    <p class="pricing-note">Paid plans require a GoCardless direct debit mandate. Cancel any time with 30 days notice.</p>
   </div>
 </div>
 
 <!-- CTA -->
 <div class="cta-section" id="start">
   <h2 class="cta-h">Start protecting yourself<br><em>today</em></h2>
-  <p class="cta-sub">Free for your first BTL property. No credit card. Takes five minutes.</p>
+  <p class="cta-sub">Free for your first BTL property. Paid plans via GoCardless monthly direct debit.</p>
   <div class="cta-btns">
     <a href="#" class="btn-white">Get started free</a>
     <a href="mailto:hello@tenancy-portal.co.uk" class="btn-outline-white">hello@tenancy-portal.co.uk</a>
