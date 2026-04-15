@@ -549,7 +549,7 @@
     <div class="nav-sep"></div>
     <a class="nav-login" href="https://portal.tenancy-portal.co.uk">Tenant login</a>
     <a class="nav-login" href="https://landlord.tenancy-portal.co.uk">Landlord login</a>
-    <a class="nav-cta" href="#start">Get started</a>
+    <a class="nav-cta" href="https://landlord.tenancy-portal.co.uk/register">Get started</a>
   </div>
 </nav>
 
@@ -559,7 +559,7 @@
   <h1 class="hero-h">Your tenancy documents.<br><em>Signed, acknowledged, sorted.</em></h1>
   <p class="hero-sub">Give every tenant a secure portal to receive, read and confirm their documents. Build the audit trail the Renters Rights Bill demands — without the letting agent fees.</p>
   <div class="hero-actions">
-    <a href="#start" class="btn-primary">Get started free</a>
+    <a href="https://landlord.tenancy-portal.co.uk/register" class="btn-primary">Get started free</a>
     <a href="#how" class="btn-ghost">See how it works</a>
   </div>
 </div>
@@ -744,7 +744,7 @@
         <div class="pcn-feat pcn-feat-muted"><div class="pcn-x"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l6 6M8 2l-6 6"/></svg></div>No compliance alerts</div>
         <div class="pcn-feat pcn-feat-muted"><div class="pcn-x"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l6 6M8 2l-6 6"/></svg></div>No audit reports</div>
       </div>
-      <a href="#start" class="pcn-btn pcn-btn-ghost">Get started free</a>
+      <a href="https://landlord.tenancy-portal.co.uk/register" class="pcn-btn pcn-btn-ghost">Get started free</a>
     </div>
 
     <!-- Pro card -->
@@ -770,7 +770,7 @@
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Deposit tracking</div>
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Priority support</div>
       </div>
-      <a href="#start" class="pcn-btn pcn-btn-primary">Get started</a>
+      <a href="https://landlord.tenancy-portal.co.uk/register" class="pcn-btn pcn-btn-primary">Get started</a>
     </div>
 
   </div>
@@ -806,7 +806,7 @@
   <h2 class="cta-h">Start protecting yourself<br><em>today</em></h2>
   <p class="cta-sub">Free for your first property. Upgrade to Pro for £29.99/mo — no contracts, cancel any time.</p>
   <div class="cta-btns">
-    <a href="#" class="btn-white">Get started free</a>
+    <a href="https://landlord.tenancy-portal.co.uk/register" class="btn-white">Get started free</a>
     <a href="mailto:hello@tenancy-portal.co.uk" class="btn-outline-white">hello@tenancy-portal.co.uk</a>
   </div>
 </div>
@@ -951,14 +951,7 @@
       alert('Something went wrong - please try again.');
     }
   }
-  document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('a[href="#start"], .ptable-btn, .nav-cta').forEach(function(el) {
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        openModal();
-      });
-    });
-  });
+  // "Get started" links now navigate directly to registration — no modal intercept
 </script>
 </body>
 </html>
