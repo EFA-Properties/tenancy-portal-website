@@ -140,10 +140,10 @@
     background: #ffffff; border-bottom: 1px solid var(--border);
     display: flex; justify-content: center; width: 100%;
   }
-  .stat { padding: 28px 48px; text-align: center; border-right: 1px solid var(--border); }
+  .stat { padding: 24px 16px; text-align: center; border-right: 1px solid var(--border); flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
   .stat:last-child { border-right: none; }
-  .stat-val { font-family: 'Fraunces', serif; font-size: 36px; font-weight: 300; color: var(--teal); }
-  .stat-lbl { font-size: 12.5px; color: var(--text3); margin-top: 4px; }
+  .stat-val { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: var(--teal); line-height: 1; height: 24px; display: flex; align-items: center; justify-content: center; white-space: nowrap; }
+  .stat-lbl { font-size: 11px; color: var(--text3); margin-top: 8px; line-height: 1.4; max-width: 110px; }
 
   /* SECTION */
   .section { padding: 80px 5%; background: #ffffff; width: 100%; box-sizing: border-box; }
@@ -249,6 +249,39 @@
   .pp-pill-done { background: var(--green-light); color: var(--green); border: 1px solid rgba(21,128,61,0.15); }
   .pp-pill-wait { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-mid); }
 
+
+
+  /* REGISTRATIONS */
+  .reg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+  @media (min-width: 769px) { .reg-grid { grid-template-columns: repeat(3, 1fr); } }
+  .reg-card {
+    background: var(--bg2); border: 1.5px solid var(--border);
+    border-radius: var(--r2); padding: 22px 20px;
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .reg-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(15,118,110,0.08); }
+  .reg-card.reg-urgent { border-color: var(--teal); background: var(--teal-light); }
+  .reg-ico {
+    width: 40px; height: 40px; border-radius: var(--r);
+    background: var(--teal-light); border: 1px solid var(--teal-mid);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--teal); margin-bottom: 14px; flex-shrink: 0;
+  }
+  .reg-ico svg { width: 18px; height: 18px; }
+  .reg-ico-urgent { background: var(--teal); border-color: var(--teal); color: white; }
+  .reg-tag {
+    display: inline-block; font-family: 'DM Mono', monospace;
+    font-size: 8.5px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 3px; margin-bottom: 10px;
+    background: var(--bg3); color: var(--text3); border: 1px solid var(--border);
+  }
+  .reg-tag-urgent { background: var(--teal); color: white; border-color: var(--teal); }
+  .reg-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+  .reg-body { font-size: 12.5px; color: var(--text2); line-height: 1.65; font-weight: 300; flex: 1; }
+  .reg-link { font-size: 12px; color: var(--teal); font-weight: 500; margin-top: 14px; }
+  @media (max-width: 768px) { .reg-grid { grid-template-columns: 1fr; } }
 
   /* PRICE CARDS */
   .price-cards {
@@ -582,10 +615,11 @@
 
 <!-- STATS -->
 <div class="stats">
-  <div class="stat"><div class="stat-val">£30k</div><div class="stat-lbl">Average fine for non-compliance</div></div>
-  <div class="stat"><div class="stat-val">8+</div><div class="stat-lbl">Documents tenants must receive</div></div>
-  <div class="stat"><div class="stat-val">100%</div><div class="stat-lbl">Digital — no paperwork, no post</div></div>
-  <div class="stat"><div class="stat-val">24hr</div><div class="stat-lbl">Awaab's Law response window</div></div>
+  <div class="stat"><div class="stat-val">1 May 2026</div><div class="stat-lbl">Section 21 abolished · Periodic tenancies in force</div></div>
+  <div class="stat"><div class="stat-val">31 May 2026</div><div class="stat-lbl">Information Sheet deadline · £7,000 fine if missed</div></div>
+  <div class="stat"><div class="stat-val">Late 2026</div><div class="stat-lbl">Mandatory landlord database registration begins</div></div>
+  <div class="stat"><div class="stat-val">2028</div><div class="stat-lbl">PRS Ombudsman membership becomes mandatory</div></div>
+  <div class="stat"><div class="stat-val">24hr</div><div class="stat-lbl">Awaab's Law — damp & mould response window</div></div>
 </div>
 
 <!-- HOW IT WORKS -->
@@ -642,6 +676,14 @@
         <div class="comp-item">
           <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
           <div><div class="comp-text">Deposit Protection Certificate</div><div class="comp-sub">DPS / TDS / MyDeposits · Within 30 days</div></div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+          <div><div class="comp-text">Right to Rent Check</div><div class="comp-sub">Required before every tenancy · Up to £20,000 fine per tenant</div></div>
+        </div>
+        <div class="comp-item">
+          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
+          <div><div class="comp-text">Inventory & Schedule of Condition</div><div class="comp-sub">Check-in report · Signed by tenant · Protects deposit claims</div></div>
         </div>
       </div>
     </div>
@@ -799,6 +841,104 @@
   <div style="margin-top:16px;background:var(--teal-light);border:1px solid var(--teal-mid);border-radius:var(--r);padding:14px 18px;display:flex;gap:10px;align-items:flex-start;">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><path d="M8 1.5L1 14h14L8 1.5z"/><path d="M8 6v4M8 11.5v.5"/></svg>
     <div style="font-size:13px;color:var(--teal);font-weight:500;">Tenancy Portal is a tax-deductible business expense — allowable against rental income under HMRC guidelines.</div>
+  </div>
+</div>
+
+<div class="divider-wrap"><div class="divider"></div></div>
+
+<!-- KEY REGISTRATIONS -->
+<div class="section" id="registrations" style="background:#ffffff;">
+  <div class="section-eye">Key Registrations & Resources</div>
+  <h2 class="section-h">What landlords need<br><em>to register for</em></h2>
+  <p class="section-b">Direct links to the government bodies and resources every private landlord in England needs to be aware of.</p>
+
+  <div class="reg-grid">
+
+    <a href="https://www.gov.uk/government/publications/the-renters-rights-act-information-sheet-2026" target="_blank" class="reg-card reg-urgent">
+      <div class="reg-ico reg-ico-urgent">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2H5a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V7l-5-5z"/><path d="M11 2v5h5"/><path d="M7 11h6M7 14h4"/></svg>
+      </div>
+      <div class="reg-tag reg-tag-urgent">DEADLINE 31 MAY 2026</div>
+      <div class="reg-title">Renters' Rights Act Information Sheet</div>
+      <div class="reg-body">Must be given to every existing tenant by 31 May 2026. Fines of up to £7,000 for non-compliance. Must be downloaded from gov.uk — other copies are not valid.</div>
+      <div class="reg-link">Download from gov.uk →</div>
+    </a>
+
+    <a href="https://www.gov.uk/guidance/private-rented-sector-database" target="_blank" class="reg-card">
+      <div class="reg-ico">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5" rx="7" ry="2.5"/><path d="M3 5v4c0 1.38 3.13 2.5 7 2.5S17 10.38 17 9V5"/><path d="M3 9v4c0 1.38 3.13 2.5 7 2.5S17 14.38 17 13V9"/></svg>
+      </div>
+      <div class="reg-tag">LATE 2026</div>
+      <div class="reg-title">Private Rented Sector Database</div>
+      <div class="reg-body">Mandatory registration for all private landlords in England. Requires contact details, property info, and proof of Gas Safety, EICR and EPC compliance.</div>
+      <div class="reg-link">Learn more on gov.uk →</div>
+    </a>
+
+    <a href="https://www.gov.uk/guidance/private-rented-sector-landlord-ombudsman" target="_blank" class="reg-card">
+      <div class="reg-ico">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5L2 7.8l5.5-.8L10 2z"/></svg>
+      </div>
+      <div class="reg-tag">MANDATORY 2028</div>
+      <div class="reg-title">PRS Landlord Ombudsman</div>
+      <div class="reg-body">All private landlords must join the new government-backed ombudsman scheme. Provides tenants with free, impartial dispute resolution. Legal requirement from 2028.</div>
+      <div class="reg-link">Learn more on gov.uk →</div>
+    </a>
+
+    <a href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" class="reg-card">
+      <div class="reg-ico">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5a2 2 0 012-2h8l4 4v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5z"/><path d="M14 3v4h4M6 9h8M6 12h6"/></svg>
+      </div>
+      <div class="reg-tag">ONGOING REQUIREMENT</div>
+      <div class="reg-title">How to Rent Guide</div>
+      <div class="reg-body">Must be given to every new tenant at the start of their tenancy. Always use the current edition — older versions are not legally compliant.</div>
+      <div class="reg-link">Download latest edition →</div>
+    </a>
+
+    <a href="https://www.nrla.org.uk" target="_blank" class="reg-card">
+      <div class="reg-ico">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/></svg>
+      </div>
+      <div class="reg-tag">RECOMMENDED</div>
+      <div class="reg-title">NRLA — National Residential Landlords Association</div>
+      <div class="reg-body">The UK's largest landlord association. Free advice line, legal guidance, and training. Essential for keeping up with the pace of legislative change.</div>
+      <div class="reg-link">Visit nrla.org.uk →</div>
+    </a>
+
+    <a href="https://www.gov.uk/guidance/check-if-you-need-an-hmo-licence" target="_blank" class="reg-card">
+      <div class="reg-ico">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l7-7 7 7v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9z"/><path d="M8 19v-8h4v8"/></svg>
+      </div>
+      <div class="reg-tag">HMO LANDLORDS</div>
+      <div class="reg-title">HMO Licence — Local Council</div>
+      <div class="reg-body">Required if you rent to 5+ people from more than one household. Some councils require licences for smaller HMOs. Must be renewed every 5 years.</div>
+      <div class="reg-link">Check requirements on gov.uk →</div>
+    </a>
+
+    <a href="https://www.gov.uk/landlords-immigration-check" target="_blank" class="reg-card">
+      <div class="reg-ico">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6"/><path d="M14 4l1.5 1.5L18 3"/></svg>
+      </div>
+      <div class="reg-tag">LEGAL REQUIREMENT</div>
+      <div class="reg-title">Right to Rent Check</div>
+      <div class="reg-body">Landlords and agents must check every tenant has the legal right to rent in England before a tenancy starts. Fines of up to £20,000 per tenant for non-compliance. Use the official gov.uk online check service.</div>
+      <div class="reg-link">Run a check on gov.uk →</div>
+    </a>
+
+    <a href="https://www.depositprotection.com/guides/inventory-check" target="_blank" class="reg-card">
+      <div class="reg-ico">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2H5a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V7l-5-5z"/><path d="M9 2v5h5"/><path d="M6 10h2m0 0h2m-2 0v4"/><path d="M12 12h2M12 15h2"/></svg>
+      </div>
+      <div class="reg-tag">BEST PRACTICE</div>
+      <div class="reg-title">Inventory & Schedule of Condition</div>
+      <div class="reg-body">A detailed check-in inventory protects landlords in deposit disputes. Under the Renters' Rights Act, the burden of proof sits with the landlord — a signed, timestamped inventory is your strongest defence.</div>
+      <div class="reg-link">Guidance from DPS →</div>
+    </a>
+
+  </div>
+
+  <div style="margin-top:24px;background:var(--teal-light);border:1px solid var(--teal-mid);border-radius:var(--r);padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 10.5v.5"/></svg>
+    <div style="font-size:13px;color:var(--teal);line-height:1.6;">Tenancy Portal keeps your compliance documents organised and delivered to tenants — so when the database goes live in late 2026, you'll already have everything in order.</div>
   </div>
 </div>
 
