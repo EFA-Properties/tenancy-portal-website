@@ -355,6 +355,29 @@
     font-size: 13px; color: var(--text3); margin-top: 12px; font-weight: 300;
   }
 
+  /* ── BILLING TOGGLE ── */
+  .billing-toggle {
+    display: inline-flex; gap: 0;
+    border: 1.5px solid var(--border);
+    border-radius: var(--r2); overflow: hidden;
+    background: var(--bg2);
+  }
+  .billing-opt {
+    padding: 10px 24px; font-size: 13.5px; font-weight: 500;
+    color: var(--text2); background: transparent; border: none;
+    cursor: pointer; transition: all 0.15s;
+    font-family: 'DM Sans', sans-serif;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .billing-opt:hover { color: var(--text); background: var(--bg3); }
+  .billing-opt.active { background: var(--teal); color: white; }
+  .billing-opt.active .save-badge { background: rgba(255,255,255,0.25); color: white; }
+  .save-badge {
+    font-size: 11px; font-weight: 600; padding: 2px 8px;
+    border-radius: 20px; background: var(--teal-light); color: var(--teal);
+    white-space: nowrap;
+  }
+
   /* pricing table */
   .ptable-wrap {
     margin-top: 32px;
@@ -775,6 +798,16 @@
   <h2 class="section-h">Simple pricing.<br><em>No surprises.</em></h2>
   <p class="section-b">One plan. Everything included. Try it free for 14 days.</p>
 
+  <!-- Billing toggle -->
+  <div style="display:flex;justify-content:center;margin-bottom:24px;">
+    <div class="billing-toggle" id="billing-toggle">
+      <button class="billing-opt active" data-period="monthly" onclick="setBillingPeriod('monthly')">Monthly</button>
+      <button class="billing-opt" data-period="annual" onclick="setBillingPeriod('annual')">
+        Annual <span class="save-badge">Save £35.88</span>
+      </button>
+    </div>
+  </div>
+
   <div class="price-cards" style="max-width:480px;">
 
     <!-- Pro — the only plan -->
@@ -783,9 +816,16 @@
         <div class="pcn-name">Pro <span class="tier-label tier-pop">14-day free trial</span></div>
         <div class="pcn-sub">Unlimited properties · BTL, HMO &amp; Hybrid</div>
       </div>
-      <div class="pcn-price">
-        <span class="price-val">£29.99</span>
-        <span class="price-pm">per month · after trial</span>
+      <!-- Monthly pricing (default) -->
+      <div class="pcn-price" id="price-monthly">
+        <span class="price-val">£17.99</span>
+        <span class="price-pm">per month · paid by Direct Debit</span>
+      </div>
+      <!-- Annual pricing (hidden) -->
+      <div class="pcn-price" id="price-annual" style="display:none;">
+        <span class="price-val">£180</span>
+        <span class="price-pm">per year · paid annually</span>
+        <div style="margin-top:6px;font-size:12px;color:var(--teal);font-weight:500;">That's just £15/month — save £35.88 vs monthly</div>
       </div>
       <div class="pcn-divider"></div>
       <div class="pcn-features">
@@ -793,7 +833,7 @@
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Document upload &amp; delivery to tenants</div>
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Timestamped acknowledgements &amp; audit trail</div>
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Compliance alerts &amp; expiry reminders</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Tenancy agreements with e-signatures</div>
+        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Interactive tenancy agreements &amp; room licences</div>
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Inventory &amp; schedule of condition</div>
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Landlord–tenant messaging</div>
         <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Full audit report download</div>
@@ -966,6 +1006,13 @@
     document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
     document.getElementById('panel-' + tab).classList.add('active');
     el.classList.add('active');
+  }
+
+  function setBillingPeriod(period) {
+    document.querySelectorAll('.billing-opt').forEach(b => b.classList.remove('active'));
+    document.querySelector('.billing-opt[data-period="' + period + '"]').classList.add('active');
+    document.getElementById('price-monthly').style.display = period === 'monthly' ? '' : 'none';
+    document.getElementById('price-annual').style.display = period === 'annual' ? '' : 'none';
   }
 </script>
 <!-- MODAL -->
