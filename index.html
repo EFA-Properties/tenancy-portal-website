@@ -507,6 +507,20 @@
   .footer-link:hover { color: var(--text2); }
   .footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); }
 
+  /* GOV DISCLAIMER BANNER */
+  .gov-disclaimer {
+    background: #1d1d1d; color: rgba(255,255,255,0.85);
+    padding: 8px 5%;
+    font-size: 12px; line-height: 1.5;
+    display: flex; align-items: center; gap: 8px;
+    justify-content: center; text-align: center;
+  }
+  .gov-disclaimer strong { color: white; font-weight: 600; }
+  .ext-link-ico {
+    display: inline-block; width: 10px; height: 10px;
+    margin-left: 3px; vertical-align: middle; opacity: 0.5;
+  }
+
   @media (max-width: 768px) {
     .nav-links { display: none; }
     .stats { flex-wrap: wrap; }
@@ -517,6 +531,7 @@
     .pricing-tabs { width: 100%; }
     .ptab { flex: 1; padding: 10px 12px; font-size: 12.5px; }
     .ptable td, .ptable th { padding: 14px 12px; font-size: 13px; }
+    .gov-disclaimer { font-size: 11px; padding: 8px 12px; }
   }
 
   /* MODAL */
@@ -593,6 +608,11 @@
 </head>
 <body>
 
+<div class="gov-disclaimer">
+  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 10.5v.5"/></svg>
+  <span>This is <strong>not</strong> a government website. Tenancy Portal is a commercial software product by <strong>P3 Technologies</strong>. Links to gov.uk open the official government website in a new tab.</span>
+</div>
+
 <nav>
   <a class="nav-logo" href="#">
     <div class="nav-mark">
@@ -627,7 +647,7 @@
 
 <!-- RRB STRIP -->
 <div class="rrb-strip">
-  <div class="rrb-strip-text"><strong>Renters' Rights Act 2025</strong> — Section 21 is abolished. Every prescribed document must be provably delivered to your tenant.</div>
+  <div class="rrb-strip-text"><strong>Renters' Rights Act 2025</strong> — Landlords now need to provably deliver prescribed documents to their tenants. Our software helps you do that.</div>
   <div class="rrb-pills">
     <span class="rrb-pill">NO S.21</span>
     <span class="rrb-pill">PERIODIC TENANCIES</span>
@@ -694,7 +714,7 @@
         </div>
         <div class="comp-item">
           <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">How to Rent Guide</div><div class="comp-sub">Gov.uk · Must be current edition</div></div>
+          <div><div class="comp-text">How to Rent Guide</div><div class="comp-sub">Official government booklet · Must be current edition</div></div>
         </div>
         <div class="comp-item">
           <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
@@ -850,19 +870,19 @@
 
   <div class="compliance-hook" style="margin-top:20px;">
     <div style="flex:1;min-width:220px;">
-      <div class="hook-label">Full Compliance Coverage</div>
-      <div class="hook-title">BTL, HMO &amp; Hybrid — one platform, every regulation</div>
+      <div class="hook-label">Compliance Features</div>
+      <div class="hook-title">BTL, HMO &amp; Hybrid — one platform to help you stay organised</div>
       <div class="hook-pills">
         <span class="hook-pill">Renters' Rights Act 2025</span>
-        <span class="hook-pill">Section 21 abolished</span>
-        <span class="hook-pill">Awaab's Law</span>
-        <span class="hook-pill">HMO licensing</span>
-        <span class="hook-pill">EICR every 5 years</span>
-        <span class="hook-pill">Gas safety annually</span>
-        <span class="hook-pill">EPC Band C (2028)</span>
-        <span class="hook-pill">Deposit protection</span>
+        <span class="hook-pill">Document delivery tracking</span>
+        <span class="hook-pill">Maintenance logging</span>
+        <span class="hook-pill">HMO licence tracking</span>
+        <span class="hook-pill">EICR expiry reminders</span>
+        <span class="hook-pill">Gas safety reminders</span>
+        <span class="hook-pill">EPC tracking</span>
+        <span class="hook-pill">Deposit protection records</span>
         <span class="hook-pill">Prescribed document delivery</span>
-        <span class="hook-pill">Up to £30k fines avoided</span>
+        <span class="hook-pill">Audit trail</span>
       </div>
     </div>
   </div>
@@ -870,7 +890,7 @@
   <p class="pricing-note">7-day free trial included. Payment via GoCardless Direct Debit — you won't be charged until your trial ends. Cancel any time.</p>
   <div style="margin-top:16px;background:var(--teal-light);border:1px solid var(--teal-mid);border-radius:var(--r);padding:14px 18px;display:flex;gap:10px;align-items:flex-start;">
     <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><path d="M8 1.5L1 14h14L8 1.5z"/><path d="M8 6v4M8 11.5v.5"/></svg>
-    <div style="font-size:13px;color:var(--teal);font-weight:500;">Tenancy Portal is a tax-deductible business expense — allowable against rental income under HMRC guidelines.</div>
+    <div style="font-size:13px;color:var(--teal);font-weight:500;">Tenancy Portal may be a tax-deductible business expense — speak to your accountant about claiming it against rental income.</div>
   </div>
 </div>
 
@@ -878,9 +898,9 @@
 
 <!-- KEY REGISTRATIONS -->
 <div class="section" id="registrations" style="background:#ffffff;">
-  <div class="section-eye">Key Registrations & Resources</div>
-  <h2 class="section-h">What landlords need<br><em>to register for</em></h2>
-  <p class="section-b">Direct links to the government bodies and resources every private landlord in England needs to be aware of.</p>
+  <div class="section-eye">Useful Links</div>
+  <h2 class="section-h">Resources we think<br><em>landlords should know about</em></h2>
+  <p class="section-b">We've curated some helpful external links for private landlords in England. These open third-party websites — Tenancy Portal is not affiliated with or endorsed by any government body.</p>
 
   <div class="reg-grid">
 
@@ -890,8 +910,8 @@
       </div>
       <div class="reg-tag reg-tag-urgent">DEADLINE 31 MAY 2026</div>
       <div class="reg-title">Renters' Rights Act Information Sheet</div>
-      <div class="reg-body">Must be given to every existing tenant by 31 May 2026. Fines of up to £7,000 for non-compliance. Must be downloaded from gov.uk — other copies are not valid.</div>
-      <div class="reg-link">Download from gov.uk →</div>
+      <div class="reg-body">Landlords are required to provide this to every existing tenant by 31 May 2026. The official version is available on the government website.</div>
+      <div class="reg-link">View on gov.uk (external site) →</div>
     </a>
 
     <a href="https://www.gov.uk/guidance/private-rented-sector-database" target="_blank" class="reg-card">
@@ -900,8 +920,8 @@
       </div>
       <div class="reg-tag">LATE 2026</div>
       <div class="reg-title">Private Rented Sector Database</div>
-      <div class="reg-body">Mandatory registration for all private landlords in England. Requires contact details, property info, and proof of Gas Safety, EICR and EPC compliance.</div>
-      <div class="reg-link">Learn more on gov.uk →</div>
+      <div class="reg-body">Registration for all private landlords in England. Expected to require contact details, property info, and proof of Gas Safety, EICR and EPC compliance.</div>
+      <div class="reg-link">View on gov.uk (external site) →</div>
     </a>
 
     <a href="https://www.gov.uk/guidance/private-rented-sector-landlord-ombudsman" target="_blank" class="reg-card">
@@ -910,8 +930,8 @@
       </div>
       <div class="reg-tag">MANDATORY 2028</div>
       <div class="reg-title">PRS Landlord Ombudsman</div>
-      <div class="reg-body">All private landlords must join the new government-backed ombudsman scheme. Provides tenants with free, impartial dispute resolution. Legal requirement from 2028.</div>
-      <div class="reg-link">Learn more on gov.uk →</div>
+      <div class="reg-body">A new ombudsman scheme for private rented sector dispute resolution, expected to become a legal requirement from 2028.</div>
+      <div class="reg-link">View on gov.uk (external site) →</div>
     </a>
 
     <a href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" class="reg-card">
@@ -920,8 +940,8 @@
       </div>
       <div class="reg-tag">ONGOING REQUIREMENT</div>
       <div class="reg-title">How to Rent Guide</div>
-      <div class="reg-body">Must be given to every new tenant at the start of their tenancy. Always use the current edition — older versions are not legally compliant.</div>
-      <div class="reg-link">Download latest edition →</div>
+      <div class="reg-body">An official government booklet that landlords provide to tenants at the start of their tenancy. The current edition is available on the government website.</div>
+      <div class="reg-link">View on gov.uk (external site) →</div>
     </a>
 
     <a href="https://www.nrla.org.uk" target="_blank" class="reg-card">
@@ -940,8 +960,8 @@
       </div>
       <div class="reg-tag">HMO LANDLORDS</div>
       <div class="reg-title">HMO Licence — Local Council</div>
-      <div class="reg-body">Required if you rent to 5+ people from more than one household. Some councils require licences for smaller HMOs. Must be renewed every 5 years.</div>
-      <div class="reg-link">Check requirements on gov.uk →</div>
+      <div class="reg-body">Generally required if you rent to 5+ people from more than one household. Some councils require licences for smaller HMOs too.</div>
+      <div class="reg-link">View on gov.uk (external site) →</div>
     </a>
 
     <a href="https://www.gov.uk/landlords-immigration-check" target="_blank" class="reg-card">
@@ -950,8 +970,8 @@
       </div>
       <div class="reg-tag">LEGAL REQUIREMENT</div>
       <div class="reg-title">Right to Rent Check</div>
-      <div class="reg-body">Landlords and agents must check every tenant has the legal right to rent in England before a tenancy starts. Fines of up to £20,000 per tenant for non-compliance. Use the official gov.uk online check service.</div>
-      <div class="reg-link">Run a check on gov.uk →</div>
+      <div class="reg-body">Landlords and agents should verify a tenant's right to rent in England before a tenancy starts. The government provides an online checking service.</div>
+      <div class="reg-link">View on gov.uk (external site) →</div>
     </a>
 
     <a href="https://www.depositprotection.com/guides/inventory-check" target="_blank" class="reg-card">
@@ -966,9 +986,9 @@
 
   </div>
 
-  <div style="margin-top:24px;background:var(--teal-light);border:1px solid var(--teal-mid);border-radius:var(--r);padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 10.5v.5"/></svg>
-    <div style="font-size:13px;color:var(--teal);line-height:1.6;">Tenancy Portal keeps your compliance documents organised and delivered to tenants — so when the database goes live in late 2026, you'll already have everything in order.</div>
+  <div style="margin-top:24px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--text3)" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 10.5v.5"/></svg>
+    <div style="font-size:12px;color:var(--text3);line-height:1.6;">The links above open external third-party websites. Tenancy Portal is an independent commercial product and is not affiliated with, endorsed by, or connected to any UK government department or agency. Information on this page is provided for general guidance only and should not be treated as legal advice.</div>
   </div>
 </div>
 
@@ -997,7 +1017,7 @@
     <a class="footer-link" href="terms.html">Terms</a>
     <a class="footer-link" href="mailto:hello@tenancy-portal.co.uk">Contact</a>
   </div>
-  <div class="footer-copy">© 2026 P3 Technologies</div>
+  <div class="footer-copy">© 2026 P3 Technologies · Tenancy Portal is a commercial SaaS product. Not affiliated with any government body.</div>
 </footer>
 
 <script>
