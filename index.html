@@ -1184,5 +1184,15 @@
     });
   });
 </script>
+<script>
+/* Close the mobile menu when tapping anywhere outside it */
+document.addEventListener('click', function (e) {
+  var nav = document.querySelector('nav.open');
+  if (nav && !nav.contains(e.target)) {
+    nav.classList.remove('open');
+    nav.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
+  }
+});
+</script>
 </body>
 </html>
