@@ -3,185 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Service — Tenancy Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<title>Terms of Service | Tenancy Portal</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f8f9fb;
-    --bg2: #ffffff;
-    --border: #e2e6ec;
-    --text: #141820;
-    --text2: #4a5268;
-    --text3: #8a90a0;
-    --teal: #0f766e;
-    --teal2: #0d9488;
-    --navy: #1e2a3a;
-    --r: 6px; --r2: 12px; --r3: 20px;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; background: #ffffff; }
-  body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: var(--text); overflow-x: hidden; }
-
-  /* NAV */
-  nav {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    height: 64px;
-    display: flex; align-items: center;
-    padding: 0 5%;
-    position: sticky; top: 0; z-index: 100;
-  }
-  .nav-logo { display: flex; align-items: center; gap: 10px; margin-right: auto; text-decoration: none; }
-  .nav-mark {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: var(--teal);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .nav-mark svg { width: 17px; height: 17px; }
-  .nav-wordmark {
-    font-family: 'Fraunces', serif;
-    font-size: 17px; font-weight: 400;
-    color: var(--text); letter-spacing: -0.3px;
-  }
-  .nav-wordmark span { color: var(--teal); }
-  .nav-links { display: flex; align-items: center; gap: 20px; }
-  .nl { font-size: 13.5px; color: var(--text2); text-decoration: none; transition: color 0.15s; }
-  .nl:hover { color: var(--text); }
-  .nav-cta {
-    padding: 8px 18px;
-    background: var(--teal); color: white;
-    border-radius: var(--r); font-size: 13.5px; font-weight: 500;
-    text-decoration: none; transition: all 0.15s;
-  }
-  .nav-cta:hover { background: var(--teal2); }
-  .nav-sep { width: 1px; height: 18px; background: var(--border); }
-  .nav-login {
-    padding: 8px 16px;
-    background: transparent; color: var(--teal);
-    border: 1.5px solid var(--teal);
-    border-radius: var(--r); font-size: 13px; font-weight: 500;
-    text-decoration: none; transition: all 0.15s;
-  }
-  .nav-login:hover { background: var(--teal); color: white; }
-
-  /* CONTENT */
-  .content {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 60px 24px 80px;
-    line-height: 1.7;
-  }
-  .content h1 {
-    font-family: 'Fraunces', serif;
-    font-size: 32px;
-    font-weight: 400;
-    color: var(--text);
-    letter-spacing: -0.5px;
-    margin-bottom: 8px;
-  }
-  .effective {
-    font-family: 'DM Mono', monospace;
-    font-size: 12px;
-    color: var(--text3);
-    margin-bottom: 32px;
-  }
-  .intro {
-    font-size: 15px;
-    color: var(--text2);
-    margin-bottom: 40px;
-    line-height: 1.75;
-  }
-  .content h2 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 18px;
-    font-weight: 600;
-    color: var(--text);
-    margin-top: 36px;
-    margin-bottom: 12px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-  .content h2:first-of-type {
-    border-top: none;
-    padding-top: 0;
-  }
-  .content p {
-    font-size: 14.5px;
-    color: var(--text2);
-    margin-bottom: 14px;
-    line-height: 1.75;
-  }
-  .content ul {
-    font-size: 14.5px;
-    color: var(--text2);
-    margin-bottom: 14px;
-    padding-left: 20px;
-    line-height: 1.75;
-  }
-  .content ul li {
-    margin-bottom: 6px;
-  }
-
-  /* FOOTER */
-  footer {
-    background: var(--bg2); border-top: 1px solid var(--border);
-    padding: 36px 5%; display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap; gap: 20px;
-  }
-  .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-  .footer-logo-mark { width: 24px; height: 24px; border-radius: 5px; background: var(--teal); display: flex; align-items: center; justify-content: center; }
-  .footer-logo-mark svg { width: 13px; height: 13px; }
-  .footer-name { font-family: 'Fraunces', serif; font-size: 14px; color: var(--text); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-link { font-size: 12.5px; color: var(--text3); text-decoration: none; transition: color 0.15s; }
-  .footer-link:hover { color: var(--text2); }
-  .footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); }
-
-  @media (max-width: 700px) {
-    .nav-links { display: none; }
-    .content { padding: 40px 20px 60px; }
-    .content h1 { font-size: 26px; }
-  }
-
-  /* MOBILE MENU */
-  .nav-toggle { display: none; }
-  @media (max-width: 700px) {
-    .nav-toggle {
-      display: flex; align-items: center; justify-content: center;
-      width: 44px; height: 44px; margin-right: -8px;
-      background: transparent; border: none; cursor: pointer; color: var(--text);
-    }
-    .nav-toggle svg { width: 24px; height: 24px; }
-    nav.open .nav-links {
-      display: flex; flex-direction: column; align-items: stretch; gap: 10px;
-      position: absolute; top: 64px; left: 0; right: 0;
-      background: var(--bg2); border-bottom: 1px solid var(--border);
-      padding: 16px 5% 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.06);
-    }
-    nav.open .nl { font-size: 15px; padding: 8px 0; }
-    nav.open .nav-sep { width: 100%; height: 1px; }
-    nav.open .nav-login, nav.open .nav-cta { text-align: center; padding: 12px 16px; font-size: 15px; }
-  }
+:root{--burg:#642E3D;--burg2:#4f2330;--oat:#F5F0E7;--oat2:#ede5d8;--rose:#DABCB5;--rose-l:#efe0dc;--char:#302D2E;--ink2:#5b5557;--ink3:#857e80;--line:#d9cfc2;--card:#fbf8f3}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--oat);color:var(--char);font:400 17px/1.7 'Manrope',system-ui,sans-serif;overflow-x:hidden}
+a{color:var(--burg)}
+.notice{background:var(--oat2);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink2);padding:8px 5%;text-align:center;line-height:1.5}
+nav{display:flex;align-items:center;gap:28px;padding:16px 5%;position:sticky;top:0;background:var(--oat);z-index:10;border-bottom:1px solid var(--char);line-height:1.4}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;color:var(--burg)}
+.logo-mark{width:38px;height:38px;flex-shrink:0}
+.logo-word{font-weight:800;font-size:24px;letter-spacing:-.04em;color:var(--char)}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
+.nl,.nav-login{text-decoration:none;color:var(--char)}.nl:hover,.nav-login:hover{color:var(--burg)}
+.nav-cta{background:var(--burg);color:#fff;text-decoration:none;padding:10px 20px;border-radius:5px;font-weight:600}
+.nav-cta:hover{background:var(--burg2)}
+.nav-toggle{display:none;background:none;border:0;width:42px;height:42px;color:var(--char)}
+.nav-toggle svg{width:26px;height:26px}
+.content{max-width:760px;margin:0 auto;padding:72px 5% 96px}
+.content h1{font-size:clamp(38px,5vw,56px);font-weight:800;letter-spacing:-.035em;line-height:1.05;margin-bottom:12px}
+.effective{display:inline-block;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--burg);margin-bottom:36px}
+.intro{font-size:19px;color:var(--ink2);margin-bottom:28px}
+.content h2{font-size:24px;font-weight:800;letter-spacing:-.025em;line-height:1.2;margin:48px 0 14px;padding-top:24px;border-top:1px solid var(--line)}
+.content p{margin-bottom:16px}
+.content ul{margin:0 0 18px;padding-left:0;list-style:none}
+.content ul li{position:relative;padding-left:22px;margin-bottom:10px}
+.content ul li:before{content:"";position:absolute;left:4px;top:.75em;width:7px;height:7px;border-radius:2px;background:var(--rose)}
+.content strong{font-weight:700}
+.detail-block{background:var(--card);border:2px solid var(--rose);border-radius:10px;padding:20px 24px;margin-bottom:16px;line-height:1.9}
+footer{padding:44px 5%;display:grid;grid-template-columns:2fr 1fr;gap:20px;font-size:14px;color:var(--ink2);border-top:1px solid var(--char);line-height:1.6}
+footer .logo-mark{width:30px;height:30px}footer .logo-word{font-size:19px}
+.foot-brand p{max-width:36em;margin-top:10px}
+.foot-links{display:flex;gap:22px;justify-content:flex-end;font-weight:600}
+.foot-links a{color:var(--char)}
+.foot-copy{color:var(--ink3)}
+@media(max-width:980px){
+ .nav-toggle{display:block}
+ .nav-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:var(--oat);border-bottom:1px solid var(--char);padding:12px 5% 20px;gap:14px}
+ nav.open .nav-links{display:flex}
+ .nav-cta{text-align:center}
+}
+@media(max-width:640px){
+ .logo-word{font-size:21px}
+ .content{padding:44px 5% 64px}
+ .content a{overflow-wrap:anywhere}
+ footer{grid-template-columns:1fr}.foot-links{justify-content:flex-start}
+}
 </style>
 </head>
 <body>
 
+<div class="notice">
+  <span>This is <strong>not</strong> a government website. Tenancy Portal is a commercial software product by <strong>P3 Technologies Ltd</strong>.</span>
+</div>
+
 <nav>
-  <a class="nav-logo" href="index.html">
-    <div class="nav-mark">
-      <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 7L8 2l6 5v7a1 1 0 01-1 1H3a1 1 0 01-1-1V7z"/>
-        <path d="M6 15v-5h4v5"/>
-      </svg>
-    </div>
-    <span class="nav-wordmark">Tenancy<span>Portal</span></span>
-  </a>
-  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links" onclick="var n=this.parentNode,o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-  </button>
-  <div class="nav-links" id="nav-links" onclick="if(event.target.tagName==='A'){var n=this.parentNode;n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false')}">
+  <a class="logo" href="index.html" aria-label="Tenancy Portal home"><svg class="logo-mark" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="23" height="28" rx="4" stroke="currentColor" stroke-width="2.6"/><rect x="11" y="9" width="23" height="28" rx="4" fill="var(--logo-fill,#F5F0E7)" stroke="currentColor" stroke-width="2.6"/><path d="M16.5 23.5l4 4 8-8" stroke="currentColor" stroke-width="2.6"/></svg><span class="logo-word">tenancyportal</span></a>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" onclick="var n=this.parentNode,o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="nav-links">
     <a class="nl" href="index.html">Home</a>
-    <div class="nav-sep"></div>
+    <a class="nl" href="index.html#pricing">Pricing</a>
     <a class="nav-login" href="https://portal.tenancy-portal.co.uk">Tenant login</a>
     <a class="nav-login" href="https://landlord.tenancy-portal.co.uk">Landlord login</a>
     <a class="nav-cta" href="https://landlord.tenancy-portal.co.uk/register">Start free trial</a>
@@ -189,7 +74,7 @@
 </nav>
 
 <div class="content">
-  <h1>Tenancy Portal — Terms of Service</h1>
+  <h1>Terms of Service</h1>
   <div class="effective">Effective: 1 May 2026</div>
 
   <div class="intro">
@@ -244,7 +129,7 @@
   <ul>
     <li>We will use reasonable endeavours to make the Service available 99.5% of the time, excluding scheduled maintenance and events outside our control.</li>
     <li>Where an Order Form or SLA specifies different availability or support levels, those terms prevail for that subscription.</li>
-    <li>Support is provided by email during UK business hours (Monday to Friday, 9am–5pm UK time, excluding public holidays).</li>
+    <li>Support is provided by email during UK business hours (Monday to Friday, 9am to 5pm UK time, excluding public holidays).</li>
   </ul>
 
   <h2>9. Suspension and termination</h2>
@@ -291,32 +176,14 @@
 </div>
 
 <footer>
-  <a class="footer-logo" href="index.html">
-    <div class="footer-logo-mark">
-      <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 7L8 2l6 5v7a1 1 0 01-1 1H3a1 1 0 01-1-1V7z"/>
-        <path d="M6 15v-5h4v5"/>
-      </svg>
-    </div>
-    <span class="footer-name">Tenancy Portal</span>
-  </a>
-  <div class="footer-links">
-    <a class="footer-link" href="privacy.html">Privacy Policy</a>
-    <a class="footer-link" href="terms.html">Terms</a>
-    <a class="footer-link" href="mailto:hello@tenancy-portal.co.uk">Contact</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 P3 Technologies</div>
+  <div class="foot-brand"><a class="logo" href="index.html" aria-label="Tenancy Portal home"><svg class="logo-mark" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="23" height="28" rx="4" stroke="currentColor" stroke-width="2.6"/><rect x="11" y="9" width="23" height="28" rx="4" fill="var(--logo-fill,#F5F0E7)" stroke="currentColor" stroke-width="2.6"/><path d="M16.5 23.5l4 4 8-8" stroke="currentColor" stroke-width="2.6"/></svg><span class="logo-word">tenancyportal</span></a><p>A product of P3 Technologies Ltd, registered in England, company number 17180916. Not affiliated with any government body.</p></div>
+  <div class="foot-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="mailto:hello@tenancy-portal.co.uk">Contact</a></div>
+  <div class="foot-copy">© 2026 P3 Technologies Ltd</div>
 </footer>
 
 <script>
-/* Close the mobile menu when tapping anywhere outside it */
-document.addEventListener('click', function (e) {
-  var nav = document.querySelector('nav.open');
-  if (nav && !nav.contains(e.target)) {
-    nav.classList.remove('open');
-    nav.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
-  }
-});
+document.addEventListener('click',function(e){var n=document.querySelector('nav.open');if(n&&!n.contains(e.target)){n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false');}});
+document.querySelector('.nav-links').addEventListener('click',function(e){if(e.target.tagName==='A'){var n=this.parentNode;n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false');}});
 </script>
 </body>
 </html>
