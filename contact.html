@@ -53,15 +53,28 @@ footer .logo-mark{width:30px;height:30px}footer .logo-word{font-size:19px}
  .content a{overflow-wrap:anywhere}
  footer{grid-template-columns:1fr}.foot-links{justify-content:flex-start}
 }
-.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:8px 0 40px}
-.card{background:var(--card);border:2px solid var(--rose);border-radius:10px;padding:22px 24px}
-.card h3{font-size:19px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
-.card p{font-size:15.5px;color:var(--ink2);margin-bottom:12px}
-.card a.go{font-weight:700;text-decoration:none}
-.email-box{background:var(--burg);color:#fff;border-radius:10px;padding:28px;margin:8px 0 40px}
-.email-box p{color:#ecdcd8;margin-bottom:14px}
-.email-box a{display:inline-block;background:var(--oat);color:var(--burg);text-decoration:none;font-weight:800;font-size:18px;padding:13px 22px;border-radius:5px;overflow-wrap:anywhere}
-@media(max-width:640px){.cards{grid-template-columns:1fr}}
+.form{background:var(--card);border:2px solid var(--rose);border-radius:10px;padding:30px;margin:8px 0 28px}
+.field{margin-bottom:20px}
+.field label,.field legend{display:block;font-weight:700;font-size:15px;margin-bottom:8px}
+.field input[type=text],.field input[type=email],.field select,.field textarea{width:100%;font:inherit;font-size:16px;color:var(--char);background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:12px 14px}
+.field textarea{min-height:150px;resize:vertical}
+.field input:focus,.field select:focus,.field textarea:focus{outline:2px solid var(--burg);outline-offset:1px;border-color:var(--burg)}
+fieldset.field{border:0;padding:0}
+.choices{display:flex;gap:12px;flex-wrap:wrap}
+.choice{flex:1;min-width:140px;position:relative}
+.choice input{position:absolute;opacity:0}
+.choice span{display:block;text-align:center;border:1.5px solid var(--line);background:#fff;border-radius:6px;padding:12px;font-weight:600;cursor:pointer}
+.choice input:checked+span{border-color:var(--burg);background:var(--rose-l);color:var(--burg)}
+.choice input:focus-visible+span{outline:2px solid var(--burg);outline-offset:2px}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.send{background:var(--burg);color:#fff;border:0;border-radius:5px;padding:15px 30px;font:inherit;font-weight:700;font-size:17px;cursor:pointer}
+.send:hover{background:var(--burg2)}.send:disabled{opacity:.6;cursor:default}
+.form-msg{margin-top:14px;font-weight:600}
+.form-msg.err{color:#a3261b}
+.thanks{display:none;text-align:center;padding:20px 0}
+.thanks h3{font-size:24px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.email-under{font-size:16px;color:var(--ink2)}
+.email-under a{font-weight:700}
 </style>
 </head>
 <body>
@@ -87,36 +100,51 @@ footer .logo-mark{width:30px;height:30px}footer .logo-word{font-size:19px}
   <h1>Contact us</h1>
   <div class="effective">Get in touch</div>
 
-  <p class="intro">Questions about Tenancy Portal, your subscription or your account? Send us an email and we will get back to you.</p>
+  <p class="intro">Questions about Tenancy Portal, your subscription or your account? Fill in the form and we will get back to you by email.</p>
 
-  <div class="email-box">
-    <p>Email us at</p>
-    <a href="mailto:hello@tenancy-portal.co.uk">hello@tenancy-portal.co.uk</a>
-  </div>
-
-  <h2>Who to contact</h2>
-  <div class="cards">
-    <div class="card">
-      <h3>Landlords</h3>
-      <p>For help with your account, documents, billing or anything else, email us. Please include the email address you signed up with.</p>
-      <a class="go" href="https://landlord.tenancy-portal.co.uk">Landlord login &rarr;</a>
+  <form class="form" id="contact-form" novalidate>
+    <div id="form-fields">
+      <fieldset class="field">
+        <legend>I am a</legend>
+        <div class="choices">
+          <label class="choice"><input type="radio" name="role" value="landlord" required><span>Landlord</span></label>
+          <label class="choice"><input type="radio" name="role" value="tenant"><span>Tenant</span></label>
+        </div>
+      </fieldset>
+      <div class="field">
+        <label for="topic">What is your enquiry about?</label>
+        <select id="topic" name="topic" required>
+          <option value="">Choose one</option>
+          <option value="trial">Starting a free trial</option>
+          <option value="account">My account or signing in</option>
+          <option value="billing">Billing and subscription</option>
+          <option value="documents">Documents</option>
+          <option value="other">Something else</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" autocomplete="name" maxlength="120" required>
+      </div>
+      <div class="field">
+        <label for="email">Your email address</label>
+        <input type="email" id="email" name="email" autocomplete="email" maxlength="200" required>
+      </div>
+      <div class="field">
+        <label for="message">Your message</label>
+        <textarea id="message" name="message" maxlength="5000" required></textarea>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input type="text" id="website" name="website" tabindex="-1" autocomplete="off"></div>
+      <button type="submit" class="send" id="send">Send message</button>
+      <p class="form-msg" id="form-msg" role="status"></p>
     </div>
-    <div class="card">
-      <h3>Tenants</h3>
-      <p>For questions about your home or repairs, please contact your landlord. We can help if you have trouble signing in.</p>
-      <a class="go" href="https://portal.tenancy-portal.co.uk">Tenant login &rarr;</a>
+    <div class="thanks" id="thanks" role="status">
+      <h3>Thank you, your message has been sent</h3>
+      <p>We will reply to the email address you gave us.</p>
     </div>
-  </div>
+  </form>
 
-  <h2>Company details</h2>
-  <div class="detail-block">
-    <strong>Company:</strong> P3 Technologies Ltd<br>
-    <strong>Company number:</strong> 17180916<br>
-    <strong>Registered office:</strong> 107a High Street, Carrville, Durham, DH1 1BQ<br>
-    <strong>ICO registration number:</strong> ZC133723<br>
-    <strong>Email:</strong> <a href="mailto:hello@tenancy-portal.co.uk">hello@tenancy-portal.co.uk</a>
-  </div>
-  <p>Tenancy Portal is a commercial software product. It is not a government service and is not connected to any government department. We cannot give legal advice.</p>
+  <p class="email-under">You can also email us at <a href="mailto:hello@tenancy-portal.co.uk">hello@tenancy-portal.co.uk</a></p>
 
 </div>
 
@@ -129,6 +157,22 @@ footer .logo-mark{width:30px;height:30px}footer .logo-word{font-size:19px}
 <script>
 document.addEventListener('click',function(e){var n=document.querySelector('nav.open');if(n&&!n.contains(e.target)){n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false');}});
 document.querySelector('.nav-links').addEventListener('click',function(e){if(e.target.tagName==='A'){var n=this.parentNode;n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false');}});
+</script>
+<script>
+(function(){
+  var f=document.getElementById('contact-form'),btn=document.getElementById('send'),msg=document.getElementById('form-msg');
+  f.addEventListener('submit',function(e){
+    e.preventDefault();msg.textContent='';msg.className='form-msg';
+    var d=new FormData(f),data={};d.forEach(function(v,k){data[k]=String(v)});
+    var miss=!data.role?'Please choose Landlord or Tenant.':!data.topic?'Please choose what your enquiry is about.':!data.name.trim()?'Please enter your name.':!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())?'Please enter a valid email address.':!data.message.trim()?'Please write a message.':'';
+    if(miss){msg.textContent=miss;msg.className='form-msg err';return;}
+    btn.disabled=true;btn.textContent='Sending...';
+    fetch('https://landlord.tenancy-portal.co.uk/api/website-contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.json().catch(function(){return {}}).then(function(j){if(!r.ok)throw new Error(j.error||'');})})
+      .then(function(){document.getElementById('form-fields').style.display='none';document.getElementById('thanks').style.display='block';})
+      .catch(function(err){btn.disabled=false;btn.textContent='Send message';msg.textContent=(err&&err.message)||'Sorry, your message could not be sent. Please email us instead.';msg.className='form-msg err';});
+  });
+})();
 </script>
 </body>
 </html>
