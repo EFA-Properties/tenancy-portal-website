@@ -91,7 +91,7 @@ fieldset.field{border:0;padding:0}
     <a class="nl" href="index.html#pricing">Pricing</a>
     <a class="nav-login" href="https://portal.tenancy-portal.co.uk">Tenant login</a>
     <a class="nav-login" href="https://landlord.tenancy-portal.co.uk">Landlord login</a>
-    <a class="nav-cta" href="https://landlord.tenancy-portal.co.uk/register">Start free trial</a>
+    <a class="nav-cta" href="https://landlord.tenancy-portal.co.uk/register">Sign up</a>
   </div>
 </nav>
 
@@ -114,12 +114,7 @@ fieldset.field{border:0;padding:0}
       <div class="field">
         <label for="topic">What is your enquiry about?</label>
         <select id="topic" name="topic" required>
-          <option value="">Choose one</option>
-          <option value="trial">Starting a free trial</option>
-          <option value="account">My account or signing in</option>
-          <option value="billing">Billing and subscription</option>
-          <option value="documents">Documents</option>
-          <option value="other">Something else</option>
+          <option value="">Choose Landlord or Tenant first</option>
         </select>
       </div>
       <div class="field">
@@ -160,6 +155,14 @@ document.querySelector('.nav-links').addEventListener('click',function(e){if(e.t
 </script>
 <script>
 (function(){
+  var topics={
+    landlord:[['account','My account or signing in'],['billing','Billing and subscription'],['documents','Documents'],['other','Something else']],
+    tenant:[['account','Signing in'],['documents','Viewing or confirming documents'],['other','Something else']]
+  };
+  var sel=document.getElementById('topic');
+  document.querySelectorAll('input[name=role]').forEach(function(r){r.addEventListener('change',function(){
+    sel.innerHTML='<option value="">Choose one</option>'+topics[r.value].map(function(t){return '<option value="'+t[0]+'">'+t[1]+'</option>'}).join('');
+  })});
   var f=document.getElementById('contact-form'),btn=document.getElementById('send'),msg=document.getElementById('form-msg');
   f.addEventListener('submit',function(e){
     e.preventDefault();msg.textContent='';msg.className='form-msg';
