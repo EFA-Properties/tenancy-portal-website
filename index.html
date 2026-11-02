@@ -3,1196 +3,330 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tenancy Portal — Document compliance for self-managing landlords</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+<title>Tenancy Portal | Tenancy documents for self managing landlords</title>
+<meta name="description" content="Send tenancy documents, track acknowledgements and keep a clear record in one place. A product of P3 Technologies Ltd.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #f8f9fb;
-    --bg2: #ffffff;
-    --bg3: #f0f2f5;
-    --border: #e2e6ec;
-    --border2: #c8cdd6;
-    --text: #141820;
-    --text2: #4a5268;
-    --text3: #8a90a0;
-    --teal: #0f766e;
-    --teal2: #0d9488;
-    --teal-light: #f0fdfa;
-    --teal-dim: rgba(15,118,110,0.08);
-    --teal-mid: rgba(15,118,110,0.15);
-    --navy: #1e2a3a;
-    --green: #15803d;
-    --green-light: #f0fdf4;
-    --amber: #b45309;
-    --amber-light: #fffbeb;
-    --red: #b91c1c;
-    --r: 6px; --r2: 12px; --r3: 20px;
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior: smooth; background: #ffffff; }
-  body { font-family: 'DM Sans', sans-serif; background: #ffffff; color: var(--text); overflow-x: hidden; }
-
-  /* NAV */
-  nav {
-    background: var(--bg2);
-    border-bottom: 1px solid var(--border);
-    height: 64px;
-    display: flex; align-items: center;
-    padding: 0 5%;
-    position: sticky; top: 0; z-index: 100;
-  }
-  .nav-logo { display: flex; align-items: center; gap: 10px; margin-right: auto; text-decoration: none; }
-  .nav-mark {
-    width: 32px; height: 32px; border-radius: 8px;
-    background: var(--teal);
-    display: flex; align-items: center; justify-content: center;
-  }
-  .nav-mark svg { width: 17px; height: 17px; }
-  .nav-wordmark {
-    font-family: 'Fraunces', serif;
-    font-size: 17px; font-weight: 400;
-    color: var(--text); letter-spacing: -0.3px;
-  }
-  .nav-wordmark span { color: var(--teal); }
-  .nav-links { display: flex; align-items: center; gap: 20px; }
-  .nl { font-size: 13.5px; color: var(--text2); text-decoration: none; transition: color 0.15s; }
-  .nl:hover { color: var(--text); }
-  .nav-cta {
-    padding: 8px 18px;
-    background: var(--teal); color: white;
-    border-radius: var(--r); font-size: 13.5px; font-weight: 500;
-    text-decoration: none; transition: all 0.15s;
-  }
-  .nav-cta:hover { background: var(--teal2); }
-  .nav-sep { width: 1px; height: 18px; background: var(--border); }
-  .nav-login {
-    padding: 8px 16px;
-    background: transparent; color: var(--teal);
-    border: 1.5px solid var(--teal);
-    border-radius: var(--r); font-size: 13px; font-weight: 500;
-    text-decoration: none; transition: all 0.15s;
-  }
-  .nav-login:hover { background: var(--teal); color: white; }
-
-  /* HERO */
-  .hero {
-    background: #ffffff;
-    border-bottom: 1px solid var(--border);
-    padding: 80px 5% 72px;
-    text-align: center;
-  }
-  .hero-tag {
-    display: inline-flex; align-items: center; gap: 6px;
-    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--teal); background: var(--teal-light);
-    border: 1px solid var(--teal-mid);
-    padding: 5px 12px; border-radius: 20px; margin-bottom: 28px;
-  }
-  .hero-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
-  .hero-h {
-    font-family: 'Fraunces', serif;
-    font-size: clamp(36px, 5vw, 60px);
-    font-weight: 300; line-height: 1.1;
-    letter-spacing: -0.5px; color: var(--text);
-    max-width: 780px; margin: 0 auto 20px;
-  }
-  .hero-h em { font-style: italic; color: var(--teal); }
-  .hero-sub {
-    font-size: 17px; color: var(--text2);
-    line-height: 1.7; font-weight: 300;
-    max-width: 560px; margin: 0 auto 40px;
-  }
-  .hero-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    padding: 13px 28px; background: var(--teal); color: white;
-    border: none; border-radius: var(--r); font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 500; cursor: pointer;
-    text-decoration: none; display: inline-block; transition: all 0.15s;
-  }
-  .btn-primary:hover { background: var(--teal2); }
-  .btn-ghost {
-    padding: 13px 28px; background: transparent; color: var(--text2);
-    border: 1.5px solid var(--border2); border-radius: var(--r);
-    font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-    cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.15s;
-  }
-  .btn-ghost:hover { border-color: var(--text3); color: var(--text); }
-
-  /* RRB STRIP */
-  .rrb-strip {
-    background: var(--navy);
-    padding: 14px 5%;
-    display: flex; align-items: center; justify-content: center; gap: 16px;
-    flex-wrap: wrap; text-align: center;
-  }
-  .rrb-strip-text { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.5; }
-  .rrb-strip-text strong { color: white; font-weight: 600; }
-  .rrb-pills { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
-  .rrb-pill {
-    font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.8px;
-    padding: 3px 8px; border-radius: 3px;
-    background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-
-  /* STATS */
-  .stats {
-    background: #ffffff; border-bottom: 1px solid var(--border);
-    display: flex; justify-content: center; width: 100%;
-  }
-  .stat { padding: 24px 16px; text-align: center; border-right: 1px solid var(--border); flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; }
-  .stat:last-child { border-right: none; }
-  .stat-val { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: var(--teal); line-height: 1; height: 24px; display: flex; align-items: center; justify-content: center; white-space: nowrap; }
-  .stat-lbl { font-size: 11px; color: var(--text3); margin-top: 8px; line-height: 1.4; max-width: 110px; }
-
-  /* SECTION */
-  .section { padding: 80px 5%; background: #ffffff; width: 100%; box-sizing: border-box; }
-  .section-inner { max-width: 1160px; margin: 0 auto; }
-  .section-eye { font-family: 'DM Mono', monospace; font-size: 9.5px; letter-spacing: 2px; text-transform: uppercase; color: var(--teal); margin-bottom: 12px; }
-  .section-h { font-family: 'Fraunces', serif; font-size: clamp(28px, 3.5vw, 44px); font-weight: 300; color: var(--text); line-height: 1.15; margin-bottom: 16px; letter-spacing: -0.3px; }
-  .section-h em { font-style: italic; color: var(--teal); }
-  .section-b { font-size: 15.5px; color: var(--text2); line-height: 1.8; font-weight: 300; max-width: 520px; }
-
-  .divider { height: 1px; background: var(--border); margin: 0 5%; background-color: var(--border); }
-  .divider-wrap { background: #ffffff; width: 100%; padding: 0; }
-
-  /* HOW IT WORKS */
-  .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 52px; }
-  .step { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r2); padding: 28px; position: relative; }
-  .step-num {
-    font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 1px;
-    color: var(--teal); background: var(--teal-light); border: 1px solid var(--teal-mid);
-    width: 28px; height: 28px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 16px; font-weight: 500;
-  }
-  .step-title { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-  .step-body { font-size: 13.5px; color: var(--text2); line-height: 1.65; font-weight: 300; }
-
-  /* FEATURES GRID */
-  .features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 52px; }
-  .feature {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: var(--r2); padding: 26px 24px;
-    display: flex; gap: 16px; align-items: flex-start;
-    transition: border-color 0.2s;
-  }
-  .feature:hover { border-color: var(--teal-mid); }
-  .feat-ico {
-    width: 38px; height: 38px; border-radius: var(--r);
-    background: var(--teal-light); border: 1px solid var(--teal-mid);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--teal); flex-shrink: 0;
-  }
-  .feat-ico svg { width: 17px; height: 17px; }
-  .feat-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 5px; }
-  .feat-body { font-size: 13px; color: var(--text2); line-height: 1.6; font-weight: 300; }
-
-  /* COMPLIANCE SECTION */
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
-  .comp-list { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
-  .comp-item {
-    display: flex; align-items: flex-start; gap: 12px;
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: var(--r); padding: 14px 16px;
-  }
-  .comp-check {
-    width: 20px; height: 20px; border-radius: 50%;
-    background: var(--green-light); border: 1px solid rgba(21,128,61,0.2);
-    display: flex; align-items: center; justify-content: center;
-    flex-shrink: 0; margin-top: 1px;
-  }
-  .comp-check svg { width: 11px; height: 11px; color: var(--green); }
-  .comp-text { font-size: 13.5px; color: var(--text); font-weight: 500; line-height: 1.3; }
-  .comp-sub { font-size: 12px; color: var(--text3); margin-top: 2px; }
-
-  /* PORTAL PREVIEW */
-  .portal-preview {
-    background: var(--bg2); border: 1px solid var(--border);
-    border-radius: var(--r2); overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.08);
-  }
-  .pp-header {
-    background: var(--navy); padding: 16px 20px;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .pp-dot { width: 8px; height: 8px; border-radius: 50%; }
-  .pp-url {
-    margin-left: 8px; font-family: 'DM Mono', monospace; font-size: 10px;
-    color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06);
-    padding: 3px 10px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);
-  }
-  .pp-body { padding: 20px; }
-  .pp-greeting { font-family: 'Fraunces', serif; font-size: 18px; color: var(--text); margin-bottom: 4px; }
-  .pp-sub { font-size: 11px; color: var(--text3); font-family: 'DM Mono', monospace; letter-spacing: 0.5px; margin-bottom: 16px; }
-  .pp-action {
-    background: var(--teal-light); border: 1px solid var(--teal-mid);
-    border-radius: var(--r); padding: 14px; margin-bottom: 12px;
-  }
-  .pp-action-eye { font-family: 'DM Mono', monospace; font-size: 8.5px; letter-spacing: 1px; color: var(--teal); margin-bottom: 4px; }
-  .pp-action-title { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 10px; }
-  .pp-btn {
-    width: 100%; padding: 10px; background: var(--teal); color: white;
-    border: none; border-radius: var(--r); font-size: 12px; font-weight: 600;
-    font-family: 'DM Sans', sans-serif; cursor: pointer;
-  }
-  .pp-doc {
-    display: flex; align-items: center; gap: 10px;
-    padding: 10px 12px; background: var(--bg3);
-    border: 1px solid var(--border); border-radius: var(--r); margin-bottom: 8px;
-  }
-  .pp-doc-ico { width: 28px; height: 28px; background: var(--teal-light); border-radius: 5px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .pp-doc-ico svg { width: 13px; height: 13px; color: var(--teal); }
-  .pp-doc-name { font-size: 11.5px; font-weight: 500; color: var(--text); }
-  .pp-doc-sub { font-size: 10px; color: var(--text3); }
-  .pp-pill { margin-left: auto; font-family: 'DM Mono', monospace; font-size: 8px; padding: 2px 7px; border-radius: 10px; }
-  .pp-pill-done { background: var(--green-light); color: var(--green); border: 1px solid rgba(21,128,61,0.15); }
-  .pp-pill-wait { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-mid); }
-
-
-
-  /* REGISTRATIONS */
-  .reg-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
-  @media (min-width: 769px) { .reg-grid { grid-template-columns: repeat(3, 1fr); } }
-  .reg-card {
-    background: var(--bg2); border: 1.5px solid var(--border);
-    border-radius: var(--r2); padding: 22px 20px;
-    text-decoration: none; color: inherit;
-    display: flex; flex-direction: column;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .reg-card:hover { border-color: var(--teal); box-shadow: 0 4px 20px rgba(15,118,110,0.08); }
-  .reg-card.reg-urgent { border-color: var(--teal); background: var(--teal-light); }
-  .reg-ico {
-    width: 40px; height: 40px; border-radius: var(--r);
-    background: var(--teal-light); border: 1px solid var(--teal-mid);
-    display: flex; align-items: center; justify-content: center;
-    color: var(--teal); margin-bottom: 14px; flex-shrink: 0;
-  }
-  .reg-ico svg { width: 18px; height: 18px; }
-  .reg-ico-urgent { background: var(--teal); border-color: var(--teal); color: white; }
-  .reg-tag {
-    display: inline-block; font-family: 'DM Mono', monospace;
-    font-size: 8.5px; letter-spacing: 1px; text-transform: uppercase;
-    padding: 3px 8px; border-radius: 3px; margin-bottom: 10px;
-    background: var(--bg3); color: var(--text3); border: 1px solid var(--border);
-  }
-  .reg-tag-urgent { background: var(--teal); color: white; border-color: var(--teal); }
-  .reg-title { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
-  .reg-body { font-size: 12.5px; color: var(--text2); line-height: 1.65; font-weight: 300; flex: 1; }
-  .reg-link { font-size: 12px; color: var(--teal); font-weight: 500; margin-top: 14px; }
-  @media (max-width: 768px) { .reg-grid { grid-template-columns: 1fr; } }
-
-  /* PRICE CARDS */
-  .price-cards {
-    display: flex; flex-direction: row;
-    gap: 20px; margin-top: 32px; max-width: 800px;
-    align-items: stretch;
-  }
-  .price-card-new {
-    background: var(--bg2); border: 1.5px solid var(--border);
-    border-radius: var(--r2); padding: 28px 24px;
-    display: flex; flex-direction: column;
-    flex: 1;
-  }
-  .price-card-featured { border-color: var(--teal); background: var(--teal-light); }
-  .pcn-head { margin-bottom: 6px; }
-  .pcn-name { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 4px; }
-  .pcn-sub { font-size: 12px; color: var(--text3); font-weight: 300; margin-bottom: 16px; }
-  .pcn-price {
-    margin-bottom: 20px;
-  }
-  .pcn-divider { height: 1px; background: var(--border); margin-bottom: 20px; }
-  .pcn-features { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; flex-grow: 1; }
-  .pcn-feat { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text2); }
-  .pcn-feat-muted { color: var(--text3); }
-  .pcn-check { width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-  .pcn-check svg { width: 8px; height: 8px; }
-  .pcn-check-teal { background: var(--teal-light); border: 1px solid var(--teal-mid); color: var(--teal); }
-  .pcn-check-green { background: var(--green-light); border: 1px solid rgba(21,128,61,0.2); color: var(--green); }
-  .pcn-x { width: 16px; height: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: var(--border2); }
-  .pcn-x svg { width: 8px; height: 8px; }
-  .pcn-btn {
-    display: block; width: 100%; padding: 12px; border-radius: var(--r);
-    font-family: 'DM Sans', sans-serif; font-size: 13.5px; font-weight: 500;
-    text-align: center; text-decoration: none; cursor: pointer; transition: all 0.15s;
-  }
-  .pcn-btn-primary { background: var(--teal); color: white; border: none; }
-  .pcn-btn-primary:hover { background: var(--teal2); }
-  .pcn-btn-ghost { background: transparent; color: var(--text2); border: 1.5px solid var(--border2); }
-  .pcn-btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
-  @media (max-width: 768px) {
-    .price-cards { flex-direction: column; }
-  }
-
-  /* ── PRICING ── */
-  .pricing-tabs {
-    display: flex; gap: 0;
-    border: 1.5px solid var(--border);
-    border-radius: var(--r2);
-    overflow: hidden;
-    margin-top: 48px;
-    width: fit-content;
-  }
-  .ptab {
-    padding: 10px 28px;
-    font-size: 13.5px; font-weight: 500;
-    color: var(--text2);
-    background: var(--bg2);
-    border: none; cursor: pointer;
-    border-right: 1px solid var(--border);
-    transition: all 0.15s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .ptab:last-child { border-right: none; }
-  .ptab:hover { color: var(--text); background: var(--bg3); }
-  .ptab.active { background: var(--teal); color: white; }
-
-  .pricing-panel { display: none; }
-  .pricing-panel.active { display: block; }
-
-  .pricing-note {
-    font-size: 13px; color: var(--text3); margin-top: 12px; font-weight: 300;
-  }
-
-  /* ── BILLING TOGGLE ── */
-  .billing-toggle {
-    display: inline-flex; gap: 0;
-    border: 1.5px solid var(--border);
-    border-radius: var(--r2); overflow: hidden;
-    background: var(--bg2);
-  }
-  .billing-opt {
-    padding: 10px 24px; font-size: 13.5px; font-weight: 500;
-    color: var(--text2); background: transparent; border: none;
-    cursor: pointer; transition: all 0.15s;
-    font-family: 'DM Sans', sans-serif;
-    display: flex; align-items: center; gap: 8px;
-  }
-  .billing-opt:hover { color: var(--text); background: var(--bg3); }
-  .billing-opt.active { background: var(--teal); color: white; }
-  .billing-opt.active .save-badge { background: rgba(255,255,255,0.25); color: white; }
-  .save-badge {
-    font-size: 11px; font-weight: 600; padding: 2px 8px;
-    border-radius: 20px; background: var(--teal-light); color: var(--teal);
-    white-space: nowrap;
-  }
-
-  /* pricing table */
-  .ptable-wrap {
-    margin-top: 32px;
-    background: var(--bg2);
-    border: 1.5px solid var(--border);
-    border-radius: var(--r2);
-    overflow: hidden;
-  }
-  .ptable {
-    width: 100%; border-collapse: collapse;
-  }
-  .ptable thead tr {
-    background: var(--bg3);
-    border-bottom: 1.5px solid var(--border);
-  }
-  .ptable th {
-    padding: 14px 20px;
-    text-align: left;
-    font-family: 'DM Mono', monospace;
-    font-size: 9.5px; letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--text3); font-weight: 500;
-  }
-  .ptable th:last-child { text-align: right; }
-  .ptable tbody tr {
-    border-bottom: 1px solid var(--border);
-    transition: background 0.12s;
-  }
-  .ptable tbody tr:last-child { border-bottom: none; }
-  .ptable tbody tr:hover { background: var(--bg3); }
-  .ptable tbody tr.featured-row { background: var(--teal-light); }
-  .ptable tbody tr.featured-row:hover { background: rgba(15,118,110,0.1); }
-  .ptable td {
-    padding: 18px 20px;
-    font-size: 14px; color: var(--text2);
-    vertical-align: middle;
-  }
-  .ptable td:first-child { color: var(--text); font-weight: 500; }
-  .ptable td:last-child { text-align: right; }
-
-  .tier-label {
-    display: inline-block;
-    font-family: 'DM Mono', monospace; font-size: 8.5px;
-    letter-spacing: 1px; text-transform: uppercase;
-    padding: 2px 8px; border-radius: 10px;
-    margin-left: 8px; vertical-align: middle;
-  }
-  .tier-free { background: var(--green-light); color: var(--green); border: 1px solid rgba(21,128,61,0.2); }
-  .tier-pop { background: var(--teal-light); color: var(--teal); border: 1px solid var(--teal-mid); }
-
-  .price-val {
-    font-family: 'Fraunces', serif;
-    font-size: 22px; font-weight: 300;
-    color: var(--teal);
-  }
-  .price-val-free {
-    font-family: 'Fraunces', serif;
-    font-size: 22px; font-weight: 300;
-    color: var(--green);
-  }
-  .price-pm { font-size: 11px; color: var(--text3); display: block; font-family: 'DM Mono', monospace; letter-spacing: 0.5px; margin-top: 1px; }
-
-  .ptable-btn {
-    padding: 7px 16px;
-    border-radius: var(--r);
-    font-size: 12.5px; font-weight: 500;
-    font-family: 'DM Sans', sans-serif;
-    cursor: pointer; transition: all 0.15s;
-    text-decoration: none; display: inline-block;
-    white-space: nowrap;
-  }
-  .ptable-btn-primary { background: var(--teal); color: white; border: none; }
-  .ptable-btn-primary:hover { background: var(--teal2); }
-  .ptable-btn-ghost { background: transparent; color: var(--text2); border: 1.5px solid var(--border2); }
-  .ptable-btn-ghost:hover { border-color: var(--text3); color: var(--text); }
-
-  /* compliance hooks per tab */
-  .compliance-hook {
-    margin-top: 20px;
-    background: var(--navy);
-    border-radius: var(--r2);
-    padding: 20px 24px;
-    display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-start;
-  }
-  .hook-label {
-    font-family: 'DM Mono', monospace; font-size: 9px;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(255,255,255,0.4); margin-bottom: 8px;
-  }
-  .hook-title {
-    font-family: 'Fraunces', serif; font-size: 15px; font-weight: 300;
-    color: white; margin-bottom: 10px;
-  }
-  .hook-pills { display: flex; gap: 6px; flex-wrap: wrap; }
-  .hook-pill {
-    font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.5px;
-    padding: 3px 9px; border-radius: 3px;
-    background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.65);
-    border: 1px solid rgba(255,255,255,0.12);
-  }
-
-  /* CTA */
-  .cta-section {
-    background: var(--navy);
-    padding: 80px 5%; text-align: center;
-  }
-  .cta-h { font-family: 'Fraunces', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 300; color: white; margin-bottom: 14px; letter-spacing: -0.3px; }
-  .cta-h em { font-style: italic; color: var(--teal2); }
-  .cta-sub { font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 36px; font-weight: 300; }
-  .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .btn-white { padding: 13px 28px; background: white; color: var(--navy); border: none; border-radius: var(--r); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.15s; }
-  .btn-white:hover { background: #f0f2f5; }
-  .btn-outline-white { padding: 13px 28px; background: transparent; color: rgba(255,255,255,0.8); border: 1.5px solid rgba(255,255,255,0.25); border-radius: var(--r); font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.15s; }
-  .btn-outline-white:hover { border-color: rgba(255,255,255,0.5); color: white; }
-
-  /* FOOTER */
-  footer {
-    background: var(--bg2); border-top: 1px solid var(--border);
-    padding: 36px 5%; display: flex; align-items: center;
-    justify-content: space-between; flex-wrap: wrap; gap: 20px;
-  }
-  .footer-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
-  .footer-logo-mark { width: 24px; height: 24px; border-radius: 5px; background: var(--teal); display: flex; align-items: center; justify-content: center; }
-  .footer-logo-mark svg { width: 13px; height: 13px; }
-  .footer-name { font-family: 'Fraunces', serif; font-size: 14px; color: var(--text); }
-  .footer-links { display: flex; gap: 24px; }
-  .footer-link { font-size: 12.5px; color: var(--text3); text-decoration: none; transition: color 0.15s; }
-  .footer-link:hover { color: var(--text2); }
-  .footer-copy { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text3); }
-
-  /* GOV DISCLAIMER BANNER */
-  .gov-disclaimer {
-    background: #1d1d1d; color: rgba(255,255,255,0.85);
-    padding: 8px 5%;
-    font-size: 12px; line-height: 1.5;
-    display: flex; align-items: center; gap: 8px;
-    justify-content: center; text-align: center;
-  }
-  .gov-disclaimer strong { color: white; font-weight: 600; }
-  .ext-link-ico {
-    display: inline-block; width: 10px; height: 10px;
-    margin-left: 3px; vertical-align: middle; opacity: 0.5;
-  }
-
-  @media (max-width: 768px) {
-    .nav-links { display: none; }
-    .stats { flex-wrap: wrap; }
-    .stat { border-right: none; border-bottom: 1px solid var(--border); padding: 20px 32px; }
-    .steps { grid-template-columns: 1fr; }
-    .features { grid-template-columns: 1fr; }
-    .two-col { grid-template-columns: 1fr; gap: 40px; }
-    .pricing-tabs { width: 100%; }
-    .ptab { flex: 1; padding: 10px 12px; font-size: 12.5px; }
-    .ptable td, .ptable th { padding: 14px 12px; font-size: 13px; }
-    .gov-disclaimer { font-size: 11px; padding: 8px 12px; }
-  }
-
-  /* MODAL */
-  .modal-overlay {
-    display: none; position: fixed; inset: 0; z-index: 200;
-    background: rgba(14,20,30,0.6); backdrop-filter: blur(4px);
-    align-items: center; justify-content: center; padding: 20px;
-  }
-  .modal-overlay.open { display: flex; }
-  .modal {
-    background: var(--bg2); border: 1.5px solid var(--border);
-    border-radius: var(--r2); width: 100%; max-width: 480px;
-    box-shadow: 0 32px 80px rgba(0,0,0,0.18);
-    animation: modalIn 0.2s ease;
-  }
-  @keyframes modalIn { from { opacity:0; transform: translateY(12px); } to { opacity:1; transform: translateY(0); } }
-  .modal-head {
-    padding: 24px 28px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex; align-items: flex-start; justify-content: space-between;
-  }
-  .modal-title { font-family: 'Fraunces', serif; font-size: 22px; font-weight: 300; color: var(--text); }
-  .modal-sub { font-size: 13px; color: var(--text3); margin-top: 4px; font-weight: 300; }
-  .modal-close {
-    width: 28px; height: 28px; border-radius: 50%;
-    background: var(--bg3); border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    color: var(--text3); flex-shrink: 0; margin-left: 12px;
-    transition: background 0.15s;
-  }
-  .modal-close:hover { background: var(--border); }
-  .modal-body { padding: 24px 28px; display: flex; flex-direction: column; gap: 16px; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-  .form-field { display: flex; flex-direction: column; gap: 6px; }
-  .form-field label {
-    font-family: 'DM Mono', monospace; font-size: 9px;
-    letter-spacing: 1.5px; text-transform: uppercase; color: var(--text3);
-  }
-  .form-field input, .form-field select, .form-field textarea {
-    padding: 10px 12px;
-    background: var(--bg3); border: 1.5px solid var(--border);
-    border-radius: var(--r); font-family: 'DM Sans', sans-serif;
-    font-size: 13.5px; color: var(--text);
-    transition: border-color 0.15s; outline: none;
-    width: 100%;
-  }
-  .form-field input:focus, .form-field select:focus, .form-field textarea:focus {
-    border-color: var(--teal); background: var(--bg2);
-  }
-  .form-field textarea { resize: none; height: 80px; }
-  .form-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%238a90a0' d='M6 8L1 3h10z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; background-color: var(--bg3); padding-right: 32px; }
-  .modal-foot { padding: 0 28px 24px; display: flex; flex-direction: column; gap: 10px; }
-  .modal-submit {
-    width: 100%; padding: 13px; background: var(--teal); color: white;
-    border: none; border-radius: var(--r); font-family: 'DM Sans', sans-serif;
-    font-size: 14px; font-weight: 500; cursor: pointer; transition: background 0.15s;
-  }
-  .modal-submit:hover { background: var(--teal2); }
-  .modal-submit:disabled { opacity: 0.6; cursor: not-allowed; }
-  .modal-legal { font-size: 11px; color: var(--text3); text-align: center; line-height: 1.5; }
-  .form-success {
-    padding: 32px 28px; text-align: center; display: none;
-  }
-  .form-success-ico {
-    width: 48px; height: 48px; border-radius: 50%;
-    background: var(--green-light); border: 1px solid rgba(21,128,61,0.2);
-    display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 16px;
-  }
-  .form-success-ico svg { width: 22px; height: 22px; color: var(--green); }
-  .form-success-title { font-family: 'Fraunces', serif; font-size: 20px; font-weight: 300; color: var(--text); margin-bottom: 8px; }
-  .form-success-body { font-size: 13.5px; color: var(--text3); line-height: 1.6; font-weight: 300; }
-
-  /* MOBILE MENU */
-  .nav-toggle { display: none; }
-  @media (max-width: 768px) {
-    .nav-toggle {
-      display: flex; align-items: center; justify-content: center;
-      width: 44px; height: 44px; margin-right: -8px;
-      background: transparent; border: none; cursor: pointer; color: var(--text);
-    }
-    .nav-toggle svg { width: 24px; height: 24px; }
-    nav.open .nav-links {
-      display: flex; flex-direction: column; align-items: stretch; gap: 10px;
-      position: absolute; top: 64px; left: 0; right: 0;
-      background: var(--bg2); border-bottom: 1px solid var(--border);
-      padding: 16px 5% 20px; box-shadow: 0 8px 16px rgba(0,0,0,0.06);
-    }
-    nav.open .nl { font-size: 15px; padding: 8px 0; }
-    nav.open .nav-sep { width: 100%; height: 1px; }
-    nav.open .nav-login, nav.open .nav-cta { text-align: center; padding: 12px 16px; font-size: 15px; }
-  }
+:root{--burg:#642E3D;--burg2:#4f2330;--oat:#F5F0E7;--oat2:#ede5d8;--rose:#DABCB5;--rose-l:#efe0dc;--char:#302D2E;--ink2:#5b5557;--ink3:#857e80;--line:#d9cfc2;--card:#fbf8f3;--ok:#dcebd6;--ok-t:#2f5a2a;}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--oat);color:var(--char);font:400 17px/1.6 'Manrope',system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit}
+h1,h2,h3{font-weight:800;letter-spacing:-.035em;color:var(--char)}
+.notice{background:var(--oat2);border-bottom:1px solid var(--line);font-size:13px;color:var(--ink2);padding:8px 5%;text-align:center}
+nav{display:flex;align-items:center;gap:28px;padding:16px 5%;position:sticky;top:0;background:var(--oat);z-index:10;border-bottom:1px solid var(--char)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;margin-right:auto;color:var(--burg)}
+.logo-mark{width:38px;height:38px;flex-shrink:0}
+.logo-word{font-weight:800;font-size:24px;letter-spacing:-.04em;color:var(--char)}
+.nav-links{display:flex;align-items:center;gap:26px;font-size:15px;font-weight:500}
+.nl,.nav-login{text-decoration:none}.nl:hover,.nav-login:hover{color:var(--burg)}
+.nav-cta{background:var(--burg);color:#fff;text-decoration:none;padding:10px 20px;border-radius:5px;font-weight:600}
+.nav-cta:hover{background:var(--burg2)}
+.nav-toggle{display:none;background:none;border:0;width:42px;height:42px;color:var(--char)}
+.nav-toggle svg{width:26px;height:26px}
+.hero>*,.split>*{min-width:0}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding:80px 5% 88px;max-width:1320px;margin:0 auto}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--burg);margin-bottom:16px}
+h1{font-size:clamp(42px,5vw,70px);line-height:1;margin-bottom:24px}
+.lede{font-size:22px;line-height:1.45;max-width:24em;margin-bottom:34px}
+.actions{display:flex;gap:28px;flex-wrap:wrap;align-items:center}
+.btn{display:inline-block;text-decoration:none;padding:15px 30px;border-radius:5px;font-weight:700;font-size:17px}
+.btn-main{background:var(--burg);color:#fff}.btn-main:hover{background:var(--burg2)}
+.btn-plain{border:1.5px solid var(--char)}
+.link-under{font-weight:500;font-size:17px;text-underline-offset:6px;text-decoration-thickness:1.5px}
+.btn-wide{display:block;text-align:center;margin-top:24px}
+.small-print{font-size:14px;color:var(--ink3);margin-top:18px}
+.panel{background:var(--card);border:2px solid var(--rose);border-radius:10px;padding:26px;font-size:15px}
+.panel-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.panel-h{font-weight:800;font-size:28px;letter-spacing:-.03em}
+.panel-btn{background:var(--burg);color:#fff;padding:8px 16px;border-radius:5px;font-weight:600;font-size:14px}
+.tabs{display:flex;gap:26px;border-bottom:1px solid var(--line);margin-bottom:18px;font-size:14px;white-space:nowrap;overflow:hidden}
+.tabs span{padding:6px 4px 10px}
+.tabs .on{color:var(--burg);font-weight:700;border-bottom:3px solid var(--burg)}
+.tr{display:grid;grid-template-columns:1.5fr 1fr .9fr;gap:12px;padding:11px 16px;border-bottom:1px solid var(--line);align-items:center}
+.th{background:var(--rose-l);border-radius:6px;border-bottom:0;font-weight:600}
+.pill{font-style:normal;font-size:13px;font-weight:600;padding:3px 10px;border-radius:4px}
+.sent{background:var(--rose-l);color:var(--burg)}.ack{background:var(--ok);color:var(--ok-t)}
+.flow{display:flex;justify-content:center;flex-wrap:wrap;gap:14px;background:var(--rose-l);border-radius:6px;padding:11px;margin-top:18px;font-size:14px}
+.flow b{font-weight:400}
+.dates{border-top:1px solid var(--char);border-bottom:1px solid var(--char);padding:34px 5%}
+.dates-h{font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--burg);max-width:1320px;margin:0 auto 18px}
+.dates-list{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);max-width:1320px;margin:0 auto}
+.dates-list li{padding:0 24px;border-left:1px solid var(--char)}
+.dates-list li:first-child{border-left:0;padding-left:0}
+.dates-list b{display:block;font-size:26px;font-weight:800;letter-spacing:-.03em}
+.dates-list span{font-size:15px;color:var(--ink2)}
+.sec{padding:96px 5%;max-width:1320px;margin:0 auto}
+.sec-alt{max-width:none;background:var(--oat2)}
+.sec-alt>.split{max-width:1320px;margin:0 auto}
+h2{font-size:clamp(34px,4vw,54px);line-height:1.05;margin-bottom:16px}
+.sec-lede{font-size:19px;color:var(--ink2);max-width:34em;margin-bottom:44px}
+.steps{list-style:none;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--char)}
+.steps li{padding:32px 32px 8px;border-left:1px solid var(--char)}
+.steps li:first-child{border-left:0;padding-left:0}
+.steps h3{font-size:34px;margin-bottom:10px}
+.steps .n{color:var(--burg);margin-right:14px}
+.steps p{font-size:17px;color:var(--ink2)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.doclist{list-style:none;border-top:1px solid var(--char)}
+.doclist li{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.doclist b{font-weight:700}.doclist span{color:var(--ink3);font-size:15px;text-align:right}
+.phone-wrap{display:flex;justify-content:center;padding-top:16px}
+.phone{width:330px;background:var(--card);border:9px solid var(--char);border-radius:34px;padding:28px 20px;font-size:14px}
+.phone-head{font-weight:800;font-size:22px;letter-spacing:-.03em}
+.phone-sub{color:var(--ink3);margin-bottom:18px}
+.phone-new{background:var(--rose-l);border-radius:8px;padding:14px;margin-bottom:18px}
+.phone-label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--burg);margin-bottom:6px}
+.phone-doc{font-weight:700;margin-bottom:10px}
+.phone-btn{background:var(--burg);color:#fff;border-radius:5px;padding:9px;text-align:center;font-size:13px;font-weight:600}
+.phone-row{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.phone-row i{font-style:normal;font-size:12px;font-weight:600;white-space:nowrap;padding:2px 8px;border-radius:4px;height:fit-content}
+.ok{background:var(--ok);color:var(--ok-t)}.wait{background:var(--rose-l);color:var(--burg)}
+.features{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--char)}
+.features div{padding:26px 26px 26px 0;border-bottom:1px solid var(--line)}
+.features h3{font-size:20px;letter-spacing:-.02em;margin-bottom:6px}
+.features p{color:var(--ink2);font-size:15.5px}
+.note{font-size:15px;color:var(--ink2);border-left:3px solid var(--rose);padding-left:14px;max-width:30em}
+.price{background:var(--card);border:2px solid var(--rose);border-radius:10px;padding:34px}
+.toggle{display:inline-flex;background:var(--rose-l);border-radius:6px;padding:3px;margin-bottom:22px}
+.toggle button{border:0;background:none;padding:8px 16px;border-radius:4px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--burg)}
+.toggle .active{background:var(--burg);color:#fff}
+.amount{font-size:64px;font-weight:800;letter-spacing:-.04em;display:block;line-height:1}
+.per{color:var(--ink3)}
+.ticks{list-style:none;margin-top:24px}
+.ticks li{padding:7px 0 7px 28px;position:relative;font-size:15px;border-bottom:1px solid var(--line)}
+.ticks li:before{content:"";position:absolute;left:3px;top:14px;width:11px;height:6px;border-left:2.2px solid var(--burg);border-bottom:2.2px solid var(--burg);transform:rotate(-45deg)}
+.links{list-style:none;border-top:1px solid var(--char)}
+.links a{display:grid;grid-template-columns:1.1fr 1.6fr auto;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none;align-items:baseline}
+.links b{font-weight:700}.links a:hover b{color:var(--burg)}
+.links span{color:var(--ink2)}
+.links em{font-style:normal;color:var(--burg);font-weight:600;font-size:14px;white-space:nowrap}
+.disclaimer{font-size:14px;color:var(--ink3);margin-top:24px;max-width:50em}
+.cta{background:var(--burg);color:var(--oat);padding:96px 5%;text-align:center}
+.cta h2{color:#fff;font-size:clamp(40px,5vw,68px)}
+.cta p{font-size:19px;max-width:34em;margin:0 auto 34px;color:#ecdcd8}
+.cta .actions{justify-content:center}
+.cta .btn-main{background:var(--oat);color:var(--burg)}
+.cta .btn-plain{border-color:var(--rose);color:#fff}
+footer{padding:44px 5%;display:grid;grid-template-columns:2fr 1fr;gap:20px;font-size:14px;color:var(--ink2);border-top:1px solid var(--char)}
+footer .logo-mark{width:30px;height:30px}footer .logo-word{font-size:19px}
+.foot-brand p{max-width:36em;margin-top:10px}
+.foot-links{display:flex;gap:22px;justify-content:flex-end;font-weight:600;color:var(--char)}
+.foot-copy{color:var(--ink3)}
+@media(max-width:980px){
+ .nav-toggle{display:block}
+ .nav-links{display:none;position:absolute;left:0;right:0;top:100%;flex-direction:column;align-items:stretch;background:var(--oat);border-bottom:1px solid var(--char);padding:12px 5% 20px;gap:14px}
+ nav.open .nav-links{display:flex}
+ .nav-cta{text-align:center}
+ .hero,.split{grid-template-columns:1fr}
+ .hero{padding:48px 5% 64px}
+ .features{grid-template-columns:1fr 1fr;column-gap:24px}
+ .sec{padding:64px 5%}
+}
+@media(max-width:640px){
+ .logo-word{font-size:21px}
+ .lede{font-size:19px}
+ .steps,.features{grid-template-columns:1fr}
+ .steps li{border-left:0;padding:24px 0 8px;border-bottom:1px solid var(--line)}
+ .dates-list{grid-template-columns:1fr 1fr;row-gap:20px}
+ .dates-list li{padding:0 0 0 16px}.dates-list li:nth-child(odd){border-left:0;padding-left:0}
+ .panel{padding:18px}.panel-h{font-size:22px}.panel-btn{font-size:12px;padding:7px 10px}
+ .tr{grid-template-columns:1.3fr 1fr;font-size:14px;padding:10px}.tr>span:nth-child(2){display:none}
+ .tr{grid-template-columns:1.6fr auto}
+ .flow{font-size:12.5px;gap:8px}
+ .links a{grid-template-columns:1fr;gap:4px}
+ .phone{width:100%;max-width:330px}
+ footer{grid-template-columns:1fr}.foot-links{justify-content:flex-start}
+}
 </style>
 </head>
 <body>
-
-<div class="gov-disclaimer">
-  <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 10.5v.5"/></svg>
-  <span>This is <strong>not</strong> a government website. Tenancy Portal is a commercial software product by <strong>P3 Technologies</strong>. Links to gov.uk open the official government website in a new tab.</span>
+<div class="notice">
+  <span>This is <strong>not</strong> a government website. Tenancy Portal is a commercial software product by <strong>P3 Technologies Ltd</strong>. Links to gov.uk open the official government website in a new tab.</span>
 </div>
 
 <nav>
-  <a class="nav-logo" href="#">
-    <div class="nav-mark">
-      <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 7L8 2l6 5v7a1 1 0 01-1 1H3a1 1 0 01-1-1V7z"/>
-        <path d="M6 15v-5h4v5"/>
-      </svg>
-    </div>
-    <span class="nav-wordmark">Tenancy<span>Portal</span></span>
-  </a>
-  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links" onclick="var n=this.parentNode,o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
-  </button>
-  <div class="nav-links" id="nav-links" onclick="if(event.target.tagName==='A'){var n=this.parentNode;n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false')}">
+  <a class="logo" href="#" aria-label="Tenancy Portal home"><svg class="logo-mark" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="23" height="28" rx="4" stroke="currentColor" stroke-width="2.6"/><rect x="11" y="9" width="23" height="28" rx="4" fill="var(--logo-fill,#F5F0E7)" stroke="currentColor" stroke-width="2.6"/><path d="M16.5 23.5l4 4 8-8" stroke="currentColor" stroke-width="2.6"/></svg><span class="logo-word">tenancyportal</span></a>
+  <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false" onclick="var n=this.parentNode,o=n.classList.toggle('open');this.setAttribute('aria-expanded',o)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  <div class="nav-links">
     <a class="nl" href="#how">How it works</a>
     <a class="nl" href="#compliance">Compliance</a>
     <a class="nl" href="#pricing">Pricing</a>
-    <div class="nav-sep"></div>
     <a class="nav-login" href="https://portal.tenancy-portal.co.uk">Tenant login</a>
     <a class="nav-login" href="https://landlord.tenancy-portal.co.uk">Landlord login</a>
     <a class="nav-cta" href="https://landlord.tenancy-portal.co.uk/register">Start free trial</a>
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-tag"><div class="hero-tag-dot"></div> Built for self-managing landlords</div>
-  <h1 class="hero-h">Your tenancy documents.<br><em>Signed, acknowledged, sorted.</em></h1>
-  <p class="hero-sub">Give every tenant a secure portal to receive, read and confirm their documents. Build the audit trail the Renters' Rights Act demands — without the letting agent fees.</p>
-  <div class="hero-actions">
-    <a href="https://landlord.tenancy-portal.co.uk/register" class="btn-primary">Start your free trial</a>
-    <a href="#how" class="btn-ghost">See how it works</a>
-  </div>
-</div>
-
-<!-- RRB STRIP -->
-<div class="rrb-strip">
-  <div class="rrb-strip-text"><strong>Renters' Rights Act 2025</strong> — Landlords now need to provably deliver prescribed documents to their tenants. Our software helps you do that.</div>
-  <div class="rrb-pills">
-    <span class="rrb-pill">NO S.21</span>
-    <span class="rrb-pill">PERIODIC TENANCIES</span>
-    <span class="rrb-pill">AWAAB'S LAW</span>
-    <span class="rrb-pill">PRS DATABASE</span>
-  </div>
-</div>
-
-<!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-val">1 May 2026</div><div class="stat-lbl">Section 21 ends · Periodic tenancies begin</div></div>
-  <div class="stat"><div class="stat-val">31 May 2026</div><div class="stat-lbl">Information Sheet deadline for existing tenants</div></div>
-  <div class="stat"><div class="stat-val">Late 2026</div><div class="stat-lbl">Mandatory landlord database registration begins</div></div>
-  <div class="stat"><div class="stat-val">2028</div><div class="stat-lbl">PRS Ombudsman membership becomes mandatory</div></div>
-  <div class="stat"><div class="stat-val">24hr</div><div class="stat-lbl">Awaab's Law — damp & mould response window</div></div>
-</div>
-
-<!-- HOW IT WORKS -->
-<div class="section" id="how">
-  <div class="section-eye">How it works</div>
-  <h2 class="section-h">Up and running in<br><em>under ten minutes</em></h2>
-  <p class="section-b">No technical knowledge required. If you can send an email, you can set up Tenancy Portal.</p>
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-title">Add your property and tenant</div>
-      <div class="step-body">Enter your property address, add your tenant's name and email. That's it — the portal is created instantly.</div>
+<header class="hero">
+  <div class="hero-text">
+    <p class="eyebrow">For landlords who manage their own lets</p>
+    <h1>Every tenancy.<br>Clearly recorded.</h1>
+    <p class="lede">Send tenancy documents, track acknowledgements and keep a clear record in one place.</p>
+    <div class="actions">
+      <a href="https://landlord.tenancy-portal.co.uk/register" class="btn btn-main">Start free trial</a>
+      <a href="#how" class="link-under">How it works</a>
     </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-title">Upload their documents</div>
-      <div class="step-body">Upload the gas safety cert, EPC, EICR, How to Rent guide, deposit certificate — any document you're required to share.</div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-title">Tenant confirms receipt</div>
-      <div class="step-body">Your tenant gets a magic link by email. They log in, read the documents, and click confirm. Every acknowledgement is timestamped and stored.</div>
+    <p class="small-print">7 days free, then £17.99 a month. Cancel any time.</p>
+  </div>
+  <div class="hero-art" aria-hidden="true">
+    <div class="panel">
+      <div class="panel-top"><span class="panel-h">Documents</span><span class="panel-btn">Upload document</span></div>
+      <div class="tabs"><span class="on">All documents</span><span>Awaiting acknowledgement</span><span>Completed</span></div>
+      <div class="table">
+        <div class="tr th"><span>Document</span><span>Tenant</span><span>Status</span></div>
+        <div class="tr"><span>Written Statement of Terms</span><span>Alex Carter</span><span><i class="pill sent">Sent</i></span></div>
+        <div class="tr"><span>Gas safety record</span><span>Jamie Reed</span><span><i class="pill ack">Acknowledged</i></span></div>
+        <div class="tr"><span>Energy performance certificate</span><span>Morgan Ellis</span><span><i class="pill ack">Acknowledged</i></span></div>
+      </div>
+      <div class="flow"><span>Document sent</span><b>&rarr;</b><span>Tenant notified</span><b>&rarr;</b><span>Acknowledgement recorded</span></div>
     </div>
   </div>
-</div>
+</header>
 
-<div class="divider-wrap"><div class="divider"></div></div>
+<section class="dates">
+  <h2 class="dates-h">Key dates under the Renters' Rights Act 2025</h2>
+  <ol class="dates-list">
+    <li><b>1 May 2026</b><span>Section 21 ends and tenancies become periodic</span></li>
+    <li><b>31 May 2026</b><span>Information Sheet for existing tenants</span></li>
+    <li><b>Late 2026</b><span>Landlord database registration opens</span></li>
+    <li><b>2028</b><span>Landlord ombudsman membership expected</span></li>
+  </ol>
+</section>
 
-<!-- COMPLIANCE -->
-<div style="background:var(--bg2);">
-<div class="section" id="compliance">
-  <div class="two-col">
+<section class="sec" id="how">
+  <p class="eyebrow">How it works</p>
+  <h2>Set up in about ten minutes</h2>
+  <p class="sec-lede">If you can send an email, you can use Tenancy Portal.</p>
+  <ol class="steps">
+    <li><h3><span class="n">01</span>Send</h3><p>Add your property and tenant, then upload their documents: gas safety record, EPC, EICR, How to Rent guide, deposit certificate and anything else you share.</p></li>
+    <li><h3><span class="n">02</span>Track</h3><p>Your tenant gets an email with a sign in link. See when each document has been sent, opened and acknowledged.</p></li>
+    <li><h3><span class="n">03</span>Keep a record</h3><p>Every acknowledgement is dated and saved with a signed copy, so your records stay organised in one place.</p></li>
+  </ol>
+</section>
+
+<section class="sec sec-alt" id="compliance">
+  <div class="split">
     <div>
-      <div class="section-eye">Compliance</div>
-      <h2 class="section-h">Every document.<br><em>Provably delivered.</em></h2>
-      <p class="section-b">Under the Renters' Rights Act, it's not enough to hand over documents — you need to prove your tenant received them. A timestamped digital acknowledgement is the strongest evidence you can have.</p>
-      <div class="comp-list">
-        <div class="comp-item">
-          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">Gas Safety Certificate (CP12)</div><div class="comp-sub">Annual renewal · Tenant must receive each year</div></div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">EPC Certificate</div><div class="comp-sub">Minimum C rating required from 2028</div></div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">EICR (Electrical Safety)</div><div class="comp-sub">Every 5 years · Required before letting</div></div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">How to Rent Guide</div><div class="comp-sub">Official government booklet · Must be current edition</div></div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">Deposit Protection Certificate</div><div class="comp-sub">DPS / TDS / MyDeposits · Within 30 days</div></div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">Right to Rent Check</div><div class="comp-sub">Required before every tenancy · Keep a record of the check</div></div>
-        </div>
-        <div class="comp-item">
-          <div class="comp-check"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 6l3 3 5-5"/></svg></div>
-          <div><div class="comp-text">Inventory & Schedule of Condition</div><div class="comp-sub">Check-in report · Signed by tenant · Protects deposit claims</div></div>
-        </div>
-      </div>
+      <p class="eyebrow">Compliance</p>
+      <h2>Every document, with proof it arrived</h2>
+      <p class="sec-lede">Handing documents over is only half of it. A dated confirmation from your tenant is a clear record that they received them.</p>
+      <ul class="doclist">
+        <li><b>Gas Safety Certificate (CP12)</b><span>Renewed every year</span></li>
+        <li><b>EPC Certificate</b><span>Minimum C rating planned from 2028</span></li>
+        <li><b>EICR (electrical safety)</b><span>Every 5 years</span></li>
+        <li><b>How to Rent guide</b><span>Current edition</span></li>
+        <li><b>Deposit protection certificate</b><span>DPS, TDS or mydeposits</span></li>
+        <li><b>Right to Rent check</b><span>A record of the check</span></li>
+        <li><b>Inventory and schedule of condition</b><span>Signed off by the tenant at check in</span></li>
+      </ul>
     </div>
-    <div class="portal-preview">
-      <div class="pp-header">
-        <div class="pp-dot" style="background:#ff5f57"></div>
-        <div class="pp-dot" style="background:#febc2e"></div>
-        <div class="pp-dot" style="background:#28c840"></div>
-        <div class="pp-url">tenancy-portal.co.uk</div>
-      </div>
-      <div class="pp-body">
-        <div class="pp-greeting">Good morning, Sarah</div>
-        <div class="pp-sub">14 BIRCHWOOD ROAD · ROOM 2</div>
-        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--text3);margin-bottom:10px;">ACTION REQUIRED</div>
-        <div class="pp-action">
-          <div class="pp-action-eye">NEW DOCUMENT</div>
-          <div class="pp-action-title">Gas Safety Certificate 2026</div>
-          <button class="pp-btn">I confirm I have received this document</button>
+    <div class="phone-wrap">
+      <div class="phone">
+        <div class="phone-head">Good morning, Sarah</div>
+        <div class="phone-sub">14 Birchwood Road, Room 2</div>
+        <div class="phone-new">
+          <div class="phone-label">New document</div>
+          <div class="phone-doc">Gas Safety Certificate 2026</div>
+          <div class="phone-btn">I confirm I have received this document</div>
         </div>
-        <div style="font-family:'DM Mono',monospace;font-size:9px;letter-spacing:1px;color:var(--text3);margin-bottom:10px;">YOUR DOCUMENTS</div>
-        <div class="pp-doc">
-          <div class="pp-doc-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 1H4a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V6L9 1z"/><path d="M9 1v5h5"/></svg></div>
-          <div><div class="pp-doc-name">Assured Periodic Tenancy Agreement / Written Statement of Terms</div><div class="pp-doc-sub">Signed 4 Sep 2023</div></div>
-          <span class="pp-pill pp-pill-done">Confirmed</span>
-        </div>
-        <div class="pp-doc">
-          <div class="pp-doc-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 1H4a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V6L9 1z"/><path d="M9 1v5h5"/></svg></div>
-          <div><div class="pp-doc-name">EPC Certificate · C (72)</div><div class="pp-doc-sub">Valid to Sep 2031</div></div>
-          <span class="pp-pill pp-pill-done">Confirmed</span>
-        </div>
-        <div class="pp-doc">
-          <div class="pp-doc-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M9 1H4a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V6L9 1z"/><path d="M9 1v5h5"/></svg></div>
-          <div><div class="pp-doc-name">Gas Safety Certificate 2026</div><div class="pp-doc-sub">Uploaded today</div></div>
-          <span class="pp-pill pp-pill-wait">Awaiting</span>
-        </div>
+        <div class="phone-label">Your documents</div>
+        <div class="phone-row"><span>Assured Periodic Tenancy Agreement / Written Statement of Terms</span><i class="ok">Confirmed</i></div>
+        <div class="phone-row"><span>EPC Certificate, C (72)</span><i class="ok">Confirmed</i></div>
+        <div class="phone-row"><span>Gas Safety Certificate 2026</span><i class="wait">Waiting</i></div>
       </div>
     </div>
   </div>
-</div>
-</div>
+</section>
 
-<div class="divider-wrap"><div class="divider"></div></div>
-
-<!-- FEATURES -->
-<div class="section">
-  <div class="section-eye">Features</div>
-  <h2 class="section-h">Everything a self-managing<br><em>landlord actually needs</em></h2>
+<section class="sec">
+  <p class="eyebrow">Features</p>
+  <h2>What you get</h2>
   <div class="features">
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 2a5 5 0 00-5 5v2l-1.5 2h13L13 9V7a5 5 0 00-5-5zM6.5 13.5a1.5 1.5 0 003 0"/></svg></div>
-      <div><div class="feat-title">Magic link login</div><div class="feat-body">No passwords for tenants to forget. They get an email, click the link, they're in. Works on any phone.</div></div>
+    <div><h3>Easy sign in for tenants</h3><p>No passwords to forget. Tenants click a link in their email and they are in, on any phone.</p></div>
+    <div><h3>Dated confirmations</h3><p>Each confirmation is logged with the date, time and IP address.</p></div>
+    <div><h3>Expiry reminders</h3><p>A nudge before certificates run out, so gas safety and EICR renewals do not slip.</p></div>
+    <div><h3>Maintenance requests</h3><p>Tenants report problems through the portal and every report is dated, which helps with Awaab's Law.</p></div>
+    <div><h3>Deposit records</h3><p>Note which scheme protects each deposit and send the certificate through the portal.</p></div>
+    <div><h3>Audit report</h3><p>Every action is recorded. Download a full report for any property whenever you need it.</p></div>
+    <div><h3>Inventories</h3><p>Room by room inventories with photos, signed off by the tenant online.</p></div>
+    <div><h3>Rule change heads ups</h3><p>Plain English updates when landlord rules change, showing which of your properties are affected and when.</p></div>
+  </div>
+</section>
+
+<section class="sec sec-alt" id="pricing">
+  <div class="split split-price">
+    <div>
+      <p class="eyebrow">Pricing</p>
+      <h2>One plan, everything included</h2>
+      <p class="sec-lede">Unlimited properties, whether you let a single flat, an HMO or a mix. Try it free for 7 days.</p>
+      <p class="note">Tenancy Portal may be a tax deductible business expense. Your accountant can tell you whether you can claim it against rental income.</p>
     </div>
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 8l4 4 8-8"/></svg></div>
-      <div><div class="feat-title">Timestamped acknowledgements</div><div class="feat-body">Every document confirmation is logged with date, time and IP address. Legally robust evidence of receipt.</div></div>
-    </div>
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1.5L1 14h14L8 1.5z"/><path d="M8 6v4M8 11.5v.5"/></svg></div>
-      <div><div class="feat-title">Compliance alerts</div><div class="feat-body">Get notified before certificates expire. Never miss a gas safety renewal or EICR deadline again.</div></div>
-    </div>
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 14V5l1-1h10l1 1v9"/><path d="M6 14v-4h4v4"/></svg></div>
-      <div><div class="feat-title">Maintenance requests</div><div class="feat-body">Tenants report issues directly through the portal. Every request is timestamped — critical for Awaab's Law compliance.</div></div>
-    </div>
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="1" y="5" width="14" height="9" rx="1.5"/><path d="M5 5V3.5C5 2 6 1 8 1s3 1 3 2.5V5"/></svg></div>
-      <div><div class="feat-title">Deposit tracking</div><div class="feat-body">Record which scheme protects each deposit. Send tenants their certificate directly through the portal.</div></div>
-    </div>
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4h10M3 8h7M3 12h5"/><rect x="1" y="1" width="14" height="14" rx="2"/></svg></div>
-      <div><div class="feat-title">Full audit log</div><div class="feat-body">Every action recorded. Download a complete compliance report for any property at any time.</div></div>
-    </div>
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M8 1v5l3 3"/><circle cx="8" cy="8" r="7"/></svg></div>
-      <div><div class="feat-title">Inventory & schedule of condition</div><div class="feat-body">Create room-by-room inventories with photos. Tenants review and sign off digitally with built-in e-signatures.</div></div>
-    </div>
-    <div class="feature">
-      <div class="feat-ico"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 12l3-3h6l3 3"/><path d="M4 8V3a1 1 0 011-1h6a1 1 0 011 1v5"/></svg></div>
-      <div><div class="feat-title">Rule change heads ups</div><div class="feat-body">Plain English updates when landlord rules change, showing which of your properties are affected and when, so nothing catches you by surprise.</div></div>
+    <div class="price">
+      <div class="toggle">
+        <button class="billing-opt active" data-period="monthly" onclick="setBillingPeriod('monthly')">Monthly</button>
+        <button class="billing-opt" data-period="annual" onclick="setBillingPeriod('annual')">Yearly, save £35.88</button>
+      </div>
+      <div id="price-monthly"><span class="amount">£17.99</span><span class="per">a month by Direct Debit</span></div>
+      <div id="price-annual" style="display:none"><span class="amount">£180</span><span class="per">a year, which works out at £15 a month</span></div>
+      <ul class="ticks">
+        <li>Tenant portal with email sign in</li>
+        <li>Document upload and delivery</li>
+        <li>Dated confirmations and audit trail</li>
+        <li>Expiry reminders</li>
+        <li>Assured Periodic Tenancy Agreement / Written Statement of Terms and room licences</li>
+        <li>Inventory and schedule of condition</li>
+        <li>Rule change heads ups</li>
+        <li>HMO licence tracking and room level portals</li>
+        <li>Maintenance requests and Awaab's Law logging</li>
+        <li>Deposit records</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="https://landlord.tenancy-portal.co.uk/register" class="btn btn-main btn-wide">Start your free trial</a>
+      <p class="small-print">No charge for 7 days. You set up Direct Debit through GoCardless at sign up and can cancel before the trial ends.</p>
     </div>
   </div>
-</div>
+</section>
 
-<div class="divider-wrap"><div class="divider"></div></div>
+<section class="sec" id="registrations">
+  <p class="eyebrow">Useful links</p>
+  <h2>Resources for landlords in England</h2>
+  <p class="sec-lede">These open other websites. Tenancy Portal is not connected to or endorsed by any government body.</p>
+  <ul class="links">
+    <li><a href="https://www.gov.uk/government/publications/the-renters-rights-act-information-sheet-2026" target="_blank" rel="noopener noreferrer"><b>Renters' Rights Act Information Sheet</b><span>For existing tenants, due by 31 May 2026</span><em>View on gov.uk (external site)</em></a></li>
+    <li><a href="https://www.gov.uk/guidance/private-rented-sector-database" target="_blank" rel="noopener noreferrer"><b>Private Rented Sector Database</b><span>Landlord registration, expected late 2026</span><em>View on gov.uk (external site)</em></a></li>
+    <li><a href="https://www.gov.uk/guidance/private-rented-sector-landlord-ombudsman" target="_blank" rel="noopener noreferrer"><b>Landlord Ombudsman</b><span>Dispute resolution scheme, expected from 2028</span><em>View on gov.uk (external site)</em></a></li>
+    <li><a href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener noreferrer"><b>How to Rent guide</b><span>The booklet tenants receive at the start of a tenancy</span><em>View on gov.uk (external site)</em></a></li>
+    <li><a href="https://www.gov.uk/guidance/check-if-you-need-an-hmo-licence" target="_blank" rel="noopener noreferrer"><b>HMO licences</b><span>Usually needed for 5 or more people from more than one household</span><em>View on gov.uk (external site)</em></a></li>
+    <li><a href="https://www.gov.uk/landlords-immigration-check" target="_blank" rel="noopener noreferrer"><b>Right to Rent check</b><span>Checking a tenant's right to rent before the tenancy starts</span><em>View on gov.uk (external site)</em></a></li>
+    <li><a href="https://www.nrla.org.uk" target="_blank" rel="noopener noreferrer"><b>NRLA</b><span>National Residential Landlords Association, advice and training</span><em>Visit nrla.org.uk</em></a></li>
+    <li><a href="https://www.depositprotection.com/guides/inventory-check" target="_blank" rel="noopener noreferrer"><b>Inventory checks</b><span>Guidance on check in inventories</span><em>Guidance from DPS</em></a></li>
+  </ul>
+  <p class="disclaimer">Tenancy Portal is an independent commercial product and is not affiliated with, endorsed by, or connected to any UK government department or agency. Information on this page is general guidance, not legal advice.</p>
+</section>
 
-<!-- PRICING -->
-<div class="section" id="pricing">
-  <div class="section-eye">Pricing</div>
-  <h2 class="section-h">Simple pricing.<br><em>No surprises.</em></h2>
-  <p class="section-b">One plan. Everything included. Try it free for 7 days.</p>
-
-  <!-- Billing toggle -->
-  <div style="display:flex;justify-content:center;margin-bottom:24px;">
-    <div class="billing-toggle" id="billing-toggle">
-      <button class="billing-opt active" data-period="monthly" onclick="setBillingPeriod('monthly')">Monthly</button>
-      <button class="billing-opt" data-period="annual" onclick="setBillingPeriod('annual')">
-        Annual <span class="save-badge">Save £35.88</span>
-      </button>
-    </div>
+<section class="cta">
+  <h2>Try it free for 7 days</h2>
+  <p>Documents, tenancy agreements, inventories and rule change heads ups in one place. £17.99 a month after your trial, no contract.</p>
+  <div class="actions">
+    <a href="https://landlord.tenancy-portal.co.uk/register" class="btn btn-main">Start your free trial</a>
+    <a href="mailto:hello@tenancy-portal.co.uk" class="btn btn-plain">hello@tenancy-portal.co.uk</a>
   </div>
-
-  <div class="price-cards" style="max-width:480px;">
-
-    <!-- Pro — the only plan -->
-    <div class="price-card-new price-card-featured">
-      <div class="pcn-head">
-        <div class="pcn-name">Pro <span class="tier-label tier-pop">7-day free trial</span></div>
-        <div class="pcn-sub">Unlimited properties · BTL, HMO &amp; Hybrid</div>
-      </div>
-      <!-- Monthly pricing (default) -->
-      <div class="pcn-price" id="price-monthly">
-        <span class="price-val">£17.99</span>
-        <span class="price-pm">per month · paid by Direct Debit</span>
-      </div>
-      <!-- Annual pricing (hidden) -->
-      <div class="pcn-price" id="price-annual" style="display:none;">
-        <span class="price-val">£180</span>
-        <span class="price-pm">per year · paid annually</span>
-        <div style="margin-top:6px;font-size:12px;color:var(--teal);font-weight:500;">That's just £15/month — save £35.88 vs monthly</div>
-      </div>
-      <div class="pcn-divider"></div>
-      <div class="pcn-features">
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Tenant portal with magic link login</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Document upload &amp; delivery to tenants</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Timestamped acknowledgements &amp; audit trail</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Compliance alerts &amp; expiry reminders</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Interactive tenancy agreements &amp; room licences</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Inventory &amp; schedule of condition</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Rule change heads ups for landlords</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Full audit report download</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>HMO licence tracking &amp; room-level portals</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Maintenance requests &amp; Awaab's Law logging</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Deposit tracking</div>
-        <div class="pcn-feat"><div class="pcn-check pcn-check-teal"><svg viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1.5 5l2.5 2.5 4.5-4.5"/></svg></div>Priority support</div>
-      </div>
-      <a href="https://landlord.tenancy-portal.co.uk/register" class="pcn-btn pcn-btn-primary">Start your free trial</a>
-      <div style="text-align:center;margin-top:8px;font-size:11.5px;color:var(--text3);font-weight:300;">No charge for 7 days. Set up Direct Debit at sign-up — cancel any time before your trial ends.</div>
-    </div>
-
-  </div>
-
-  <div class="compliance-hook" style="margin-top:20px;">
-    <div style="flex:1;min-width:220px;">
-      <div class="hook-label">Compliance Features</div>
-      <div class="hook-title">BTL, HMO &amp; Hybrid — one platform to help you stay organised</div>
-      <div class="hook-pills">
-        <span class="hook-pill">Renters' Rights Act 2025</span>
-        <span class="hook-pill">Document delivery tracking</span>
-        <span class="hook-pill">Maintenance logging</span>
-        <span class="hook-pill">HMO licence tracking</span>
-        <span class="hook-pill">EICR expiry reminders</span>
-        <span class="hook-pill">Gas safety reminders</span>
-        <span class="hook-pill">EPC tracking</span>
-        <span class="hook-pill">Deposit protection records</span>
-        <span class="hook-pill">Prescribed document delivery</span>
-        <span class="hook-pill">Audit trail</span>
-      </div>
-    </div>
-  </div>
-
-  <p class="pricing-note">7-day free trial included. Payment via GoCardless Direct Debit — you won't be charged until your trial ends. Cancel any time.</p>
-  <div style="margin-top:16px;background:var(--teal-light);border:1px solid var(--teal-mid);border-radius:var(--r);padding:14px 18px;display:flex;gap:10px;align-items:flex-start;">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--teal)" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0;margin-top:1px"><path d="M8 1.5L1 14h14L8 1.5z"/><path d="M8 6v4M8 11.5v.5"/></svg>
-    <div style="font-size:13px;color:var(--teal);font-weight:500;">Tenancy Portal may be a tax-deductible business expense — speak to your accountant about claiming it against rental income.</div>
-  </div>
-</div>
-
-<div class="divider-wrap"><div class="divider"></div></div>
-
-<!-- KEY REGISTRATIONS -->
-<div class="section" id="registrations" style="background:#ffffff;">
-  <div class="section-eye">Useful Links</div>
-  <h2 class="section-h">Resources we think<br><em>landlords should know about</em></h2>
-  <p class="section-b">We've curated some helpful external links for private landlords in England. These open third-party websites — Tenancy Portal is not affiliated with or endorsed by any government body.</p>
-
-  <div class="reg-grid">
-
-    <a href="https://www.gov.uk/government/publications/the-renters-rights-act-information-sheet-2026" target="_blank" rel="noopener noreferrer" class="reg-card reg-urgent">
-      <div class="reg-ico reg-ico-urgent">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 2H5a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V7l-5-5z"/><path d="M11 2v5h5"/><path d="M7 11h6M7 14h4"/></svg>
-      </div>
-      <div class="reg-tag reg-tag-urgent">DEADLINE 31 MAY 2026</div>
-      <div class="reg-title">Renters' Rights Act Information Sheet</div>
-      <div class="reg-body">Landlords are required to provide this to every existing tenant by 31 May 2026. The official version is available on the government website.</div>
-      <div class="reg-link">View on gov.uk (external site) →</div>
-    </a>
-
-    <a href="https://www.gov.uk/guidance/private-rented-sector-database" target="_blank" rel="noopener noreferrer" class="reg-card">
-      <div class="reg-ico">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5" rx="7" ry="2.5"/><path d="M3 5v4c0 1.38 3.13 2.5 7 2.5S17 10.38 17 9V5"/><path d="M3 9v4c0 1.38 3.13 2.5 7 2.5S17 14.38 17 13V9"/></svg>
-      </div>
-      <div class="reg-tag">LATE 2026</div>
-      <div class="reg-title">Private Rented Sector Database</div>
-      <div class="reg-body">Registration for all private landlords in England. Expected to require contact details, property info, and proof of Gas Safety, EICR and EPC compliance.</div>
-      <div class="reg-link">View on gov.uk (external site) →</div>
-    </a>
-
-    <a href="https://www.gov.uk/guidance/private-rented-sector-landlord-ombudsman" target="_blank" rel="noopener noreferrer" class="reg-card">
-      <div class="reg-ico">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2l2.5 5 5.5.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5L2 7.8l5.5-.8L10 2z"/></svg>
-      </div>
-      <div class="reg-tag">MANDATORY 2028</div>
-      <div class="reg-title">PRS Landlord Ombudsman</div>
-      <div class="reg-body">A new ombudsman scheme for private rented sector dispute resolution, expected to become a legal requirement from 2028.</div>
-      <div class="reg-link">View on gov.uk (external site) →</div>
-    </a>
-
-    <a href="https://www.gov.uk/government/publications/how-to-rent" target="_blank" rel="noopener noreferrer" class="reg-card">
-      <div class="reg-ico">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 5a2 2 0 012-2h8l4 4v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5z"/><path d="M14 3v4h4M6 9h8M6 12h6"/></svg>
-      </div>
-      <div class="reg-tag">ONGOING REQUIREMENT</div>
-      <div class="reg-title">How to Rent Guide</div>
-      <div class="reg-body">An official government booklet that landlords provide to tenants at the start of their tenancy. The current edition is available on the government website.</div>
-      <div class="reg-link">View on gov.uk (external site) →</div>
-    </a>
-
-    <a href="https://www.nrla.org.uk" target="_blank" rel="noopener noreferrer" class="reg-card">
-      <div class="reg-ico">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2"/><circle cx="10" cy="7" r="4"/></svg>
-      </div>
-      <div class="reg-tag">RECOMMENDED</div>
-      <div class="reg-title">NRLA — National Residential Landlords Association</div>
-      <div class="reg-body">The UK's largest landlord association. Free advice line, legal guidance, and training. Essential for keeping up with the pace of legislative change.</div>
-      <div class="reg-link">Visit nrla.org.uk →</div>
-    </a>
-
-    <a href="https://www.gov.uk/guidance/check-if-you-need-an-hmo-licence" target="_blank" rel="noopener noreferrer" class="reg-card">
-      <div class="reg-ico">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l7-7 7 7v9a1 1 0 01-1 1H4a1 1 0 01-1-1V9z"/><path d="M8 19v-8h4v8"/></svg>
-      </div>
-      <div class="reg-tag">HMO LANDLORDS</div>
-      <div class="reg-title">HMO Licence — Local Council</div>
-      <div class="reg-body">Generally required if you rent to 5+ people from more than one household. Some councils require licences for smaller HMOs too.</div>
-      <div class="reg-link">View on gov.uk (external site) →</div>
-    </a>
-
-    <a href="https://www.gov.uk/landlords-immigration-check" target="_blank" rel="noopener noreferrer" class="reg-card">
-      <div class="reg-ico">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.5"/><path d="M3 18c0-3.5 3.1-6 7-6s7 2.5 7 6"/><path d="M14 4l1.5 1.5L18 3"/></svg>
-      </div>
-      <div class="reg-tag">LEGAL REQUIREMENT</div>
-      <div class="reg-title">Right to Rent Check</div>
-      <div class="reg-body">Landlords and agents should verify a tenant's right to rent in England before a tenancy starts. The government provides an online checking service.</div>
-      <div class="reg-link">View on gov.uk (external site) →</div>
-    </a>
-
-    <a href="https://www.depositprotection.com/guides/inventory-check" target="_blank" rel="noopener noreferrer" class="reg-card">
-      <div class="reg-ico">
-        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2H5a1 1 0 00-1 1v14a1 1 0 001 1h10a1 1 0 001-1V7l-5-5z"/><path d="M9 2v5h5"/><path d="M6 10h2m0 0h2m-2 0v4"/><path d="M12 12h2M12 15h2"/></svg>
-      </div>
-      <div class="reg-tag">BEST PRACTICE</div>
-      <div class="reg-title">Inventory & Schedule of Condition</div>
-      <div class="reg-body">A detailed check-in inventory protects landlords in deposit disputes. Under the Renters' Rights Act, the burden of proof sits with the landlord — a signed, timestamped inventory is your strongest defence.</div>
-      <div class="reg-link">Guidance from DPS →</div>
-    </a>
-
-  </div>
-
-  <div style="margin-top:24px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--r);padding:16px 20px;display:flex;gap:12px;align-items:flex-start;">
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--text3)" stroke-width="1.5" stroke-linecap="round" style="flex-shrink:0;margin-top:2px"><circle cx="8" cy="8" r="6"/><path d="M8 5v3.5M8 10.5v.5"/></svg>
-    <div style="font-size:12px;color:var(--text3);line-height:1.6;">The links above open external third-party websites. Tenancy Portal is an independent commercial product and is not affiliated with, endorsed by, or connected to any UK government department or agency. Information on this page is provided for general guidance only and should not be treated as legal advice.</div>
-  </div>
-</div>
-
-<!-- CTA -->
-<div class="cta-section" id="start">
-  <h2 class="cta-h">Start protecting yourself<br><em>today</em></h2>
-  <p class="cta-sub">Compliance documents, tenancy agreements, inventories and rule change heads ups, all in one portal.<br>From £17.99/mo after your 7-day free trial. No contracts, cancel any time.</p>
-  <div class="cta-btns">
-    <a href="https://landlord.tenancy-portal.co.uk/register" class="btn-white">Start your free trial</a>
-    <a href="mailto:hello@tenancy-portal.co.uk" class="btn-outline-white">hello@tenancy-portal.co.uk</a>
-  </div>
-</div>
+</section>
 
 <footer>
-  <a class="footer-logo" href="#">
-    <div class="footer-logo-mark">
-      <svg viewBox="0 0 16 16" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M2 7L8 2l6 5v7a1 1 0 01-1 1H3a1 1 0 01-1-1V7z"/>
-        <path d="M6 15v-5h4v5"/>
-      </svg>
-    </div>
-    <span class="footer-name">Tenancy Portal</span>
-  </a>
-  <div class="footer-links">
-    <a class="footer-link" href="privacy.html">Privacy Policy</a>
-    <a class="footer-link" href="terms.html">Terms</a>
-    <a class="footer-link" href="mailto:hello@tenancy-portal.co.uk">Contact</a>
-  </div>
-  <div class="footer-copy">© 2026 P3 Technologies · Tenancy Portal is a commercial SaaS product. Not affiliated with any government body.</div>
+  <div class="foot-brand"><a class="logo" href="#" aria-label="Tenancy Portal home"><svg class="logo-mark" viewBox="0 0 40 40" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="23" height="28" rx="4" stroke="currentColor" stroke-width="2.6"/><rect x="11" y="9" width="23" height="28" rx="4" fill="var(--logo-fill,#F5F0E7)" stroke="currentColor" stroke-width="2.6"/><path d="M16.5 23.5l4 4 8-8" stroke="currentColor" stroke-width="2.6"/></svg><span class="logo-word">tenancyportal</span></a><p>A product of P3 Technologies Ltd, registered in England, company number 17180916. Not affiliated with any government body.</p></div>
+  <div class="foot-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms</a><a href="mailto:hello@tenancy-portal.co.uk">Contact</a></div>
+  <div class="foot-copy">© 2026 P3 Technologies Ltd</div>
 </footer>
 
 <script>
-  function showTab(tab, el) {
-    document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.ptab').forEach(t => t.classList.remove('active'));
-    document.getElementById('panel-' + tab).classList.add('active');
-    el.classList.add('active');
-  }
-
-  function setBillingPeriod(period) {
-    document.querySelectorAll('.billing-opt').forEach(b => b.classList.remove('active'));
-    document.querySelector('.billing-opt[data-period="' + period + '"]').classList.add('active');
-    document.getElementById('price-monthly').style.display = period === 'monthly' ? '' : 'none';
-    document.getElementById('price-annual').style.display = period === 'annual' ? '' : 'none';
-  }
-</script>
-<!-- MODAL -->
-<div class="modal-overlay" id="enquiryModal" onclick="closeModalOutside(event)">
-  <div class="modal">
-    <div class="modal-head">
-      <div>
-        <div class="modal-title">Get started</div>
-        <div class="modal-sub">Tell us about your portfolio and we'll be in touch.</div>
-      </div>
-      <button class="modal-close" onclick="closeModal()">
-        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M1 1l10 10M11 1L1 11"/></svg>
-      </button>
-    </div>
-    <div id="formWrap">
-      <div class="modal-body">
-        <div class="form-row">
-          <div class="form-field">
-            <label>First name</label>
-            <input type="text" name="first_name" id="f_first" placeholder="Sarah">
-          </div>
-          <div class="form-field">
-            <label>Last name</label>
-            <input type="text" name="last_name" id="f_last" placeholder="Jones">
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Email address</label>
-          <input type="email" name="email" id="f_email" placeholder="sarah@example.com">
-        </div>
-        <div class="form-row">
-          <div class="form-field">
-            <label>Portfolio type</label>
-            <select name="portfolio_type" id="f_type">
-              <option value="">Select type</option>
-              <option value="BTL">Buy-to-Let</option>
-              <option value="HMO">HMO</option>
-              <option value="Hybrid">Hybrid</option>
-            </select>
-          </div>
-          <div class="form-field">
-            <label>No. of properties</label>
-            <select name="number_of_properties" id="f_props">
-              <option value="">Select range</option>
-              <option value="1">1 property</option>
-              <option value="2-10">2-10 properties</option>
-              <option value="11+">11+ properties</option>
-            </select>
-          </div>
-        </div>
-        <div class="form-field">
-          <label>Message (optional)</label>
-          <textarea name="message" id="f_msg" placeholder="Any questions or context..."></textarea>
-        </div>
-      </div>
-      <div class="modal-foot">
-        <button class="modal-submit" id="submitBtn" onclick="submitForm()">Send enquiry</button>
-        <div class="modal-legal">By submitting you agree to us contacting you about Tenancy Portal. No spam, ever.</div>
-      </div>
-    </div>
-    <div class="form-success" id="formSuccess">
-      <div class="form-success-ico">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
-      </div>
-      <div class="form-success-title">Thanks - we'll be in touch.</div>
-      <div class="form-success-body">We've received your enquiry and will get back to you shortly.</div>
-    </div>
-  </div>
-</div>
-
-<script>
-  function openModal() {
-    document.getElementById('enquiryModal').classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeModal() {
-    document.getElementById('enquiryModal').classList.remove('open');
-    document.body.style.overflow = '';
-  }
-  function closeModalOutside(e) {
-    if (e.target === document.getElementById('enquiryModal')) closeModal();
-  }
-  async function submitForm() {
-    const btn = document.getElementById('submitBtn');
-    const first = document.getElementById('f_first').value.trim();
-    const last = document.getElementById('f_last').value.trim();
-    const email = document.getElementById('f_email').value.trim();
-    if (!first || !last || !email) { alert('Please fill in your name and email address.'); return; }
-    btn.disabled = true;
-    btn.textContent = 'Sending...';
-    const data = {
-      first_name: first, last_name: last, email: email,
-      portfolio_type: document.getElementById('f_type').value,
-      number_of_properties: document.getElementById('f_props').value,
-      message: document.getElementById('f_msg').value,
-      _replyto: email,
-      _subject: 'Tenancy Portal Enquiry - ' + first + ' ' + last
-    };
-    try {
-      const res = await fetch('https://formspree.io/f/mqewkqwn', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      if (res.ok) {
-        document.getElementById('formWrap').style.display = 'none';
-        document.getElementById('formSuccess').style.display = 'block';
-      } else {
-        btn.disabled = false; btn.textContent = 'Send enquiry';
-        alert('Something went wrong - please try again.');
-      }
-    } catch(e) {
-      btn.disabled = false; btn.textContent = 'Send enquiry';
-      alert('Something went wrong - please try again.');
-    }
-  }
-  document.addEventListener('DOMContentLoaded', function() {
-    // Contact link opens the enquiry modal
-    document.querySelectorAll('a.footer-link[href="#"]').forEach(function(el) {
-      if (el.textContent.trim() === 'Contact') {
-        el.addEventListener('click', function(e) {
-          e.preventDefault();
-          openModal();
-        });
-      }
-    });
-  });
-</script>
-<script>
-/* Close the mobile menu when tapping anywhere outside it */
-document.addEventListener('click', function (e) {
-  var nav = document.querySelector('nav.open');
-  if (nav && !nav.contains(e.target)) {
-    nav.classList.remove('open');
-    nav.querySelector('.nav-toggle').setAttribute('aria-expanded', 'false');
-  }
-});
+function setBillingPeriod(p){document.querySelectorAll('.billing-opt').forEach(function(b){b.classList.toggle('active',b.dataset.period===p)});document.getElementById('price-monthly').style.display=p==='monthly'?'':'none';document.getElementById('price-annual').style.display=p==='annual'?'':'none';}
+document.addEventListener('click',function(e){var n=document.querySelector('nav.open');if(n&&!n.contains(e.target)){n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false');}});
+document.querySelector('.nav-links').addEventListener('click',function(e){if(e.target.tagName==='A'){var n=this.parentNode;n.classList.remove('open');n.querySelector('.nav-toggle').setAttribute('aria-expanded','false');}});
 </script>
 </body>
 </html>
